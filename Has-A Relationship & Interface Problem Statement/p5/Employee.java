@@ -6,6 +6,10 @@ public class Employee {
 	private String name;
 	private int salary;
 	
+	
+	public Employee() {
+		super();
+	}
 	public Employee(int empId,String name,int salary)
 	{
 		this.empId = empId;
