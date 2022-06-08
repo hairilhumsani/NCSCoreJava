@@ -4,7 +4,7 @@ package p5;
 
 public class MainClass implements EmployeeService{
 	
-	public Project getSampleRecord()
+	public Project[] getSampleRecord()
 	{
 		Project p1 = new Project();
 		p1.setProjectName("MyBankApp");
@@ -36,14 +36,47 @@ public class MainClass implements EmployeeService{
 			
 		p1.setResourceTeam(resourceTeam1);
 	
-		return p1;
+		Project p2 = new Project();
+		p2.setProjectName("MyBankApp2");
+		
+		Employee f1 = new Employee();
+		e1.setEmpId(1);
+		e1.setName("A");
+		e1.setSalary(2000);
+		
+		Employee f2 = new Employee();
+		e2.setEmpId(2);
+		e2.setName("B");
+		e2.setSalary(6000);
+		
+		Employee f3 = new Employee();
+		e3.setEmpId(3);
+		e3.setName("C");
+		e3.setSalary(2800);
+		
+		Employee f4 = new Employee();
+		e4.setEmpId(4);
+		e4.setName("D");
+		e4.setSalary(3000);
+		
+		Employee resourceTeam2[] = new Employee[3];
+		resourceTeam2[0] = f1;
+		resourceTeam2[1] = f2;
+		resourceTeam2[2] = f3;
+			
+		p2.setResourceTeam(resourceTeam2);
+		
+		Project[] project = new Project[2]; 
+		project[0] = p1;
+		project[1] = p2;
+		return project;
 	}
 	
 	public static void main(String[] args) {
 		
 		MainClass obj = new MainClass();
 		
-		Project project = obj.getSampleRecord();
+		Project[] project = obj.getSampleRecord();
 		// --------------------------- ----------------------------------
 		// 		Calling implementation methods 
 		
