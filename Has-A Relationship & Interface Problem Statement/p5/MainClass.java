@@ -8,7 +8,8 @@ public class MainClass implements EmployeeService{
 
 	@Override
 	public Employee[] getAllEmployees(Project project) {
-		// TODO Auto-generated method stub
+		
+		
 		return null;
 	}
 
