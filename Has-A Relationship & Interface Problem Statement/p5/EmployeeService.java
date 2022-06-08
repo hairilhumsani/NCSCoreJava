@@ -2,11 +2,11 @@ package p5;
 
 public interface EmployeeService {
 	
-	public Employee[] getAllEmployees(String projectName);
+	public Employee[] getAllEmployees(Project project);
 	
 	public int getSalary(int empId);
 	
-	public int getTotalSalaryPaid(String projectName);
+	public int getTotalSalaryPaid(Project pro);
 	
 	public String[] getEmployeeNames(String projectName);
 
