@@ -106,8 +106,42 @@ public class MainClass implements EmployeeService{
 	@Override
 	public String[] getEmployeeNames(Project project) {
 		
-		return null;
+		// extract all employees
+		Employee listofEmployees[] = getAllEmployees(project);
+		
+		// create temporary array for storing names of employee
+		String allNames[] = new String[listofEmployees.length];
+		
+		/*
+		int pos = -1;
+		for (Employee employee : listofEmployees) {
+			allNames[++pos] =employee.getName();
+		}
+		*/
+		
+		/*
+		int index = 0;
+		while(index<listofEmployees.length)
+		{
+			allNames[index] =listofEmployees[index].getName();
+			index++;
+		}
+		*/
+
+		// iterating over all employee records 
+		for(int i =0;i<listofEmployees.length;i++)
+		{
+			  // extract name from each employee and store in temporary array location
+			allNames[i] =listofEmployees[i].getName();
+		}
+		
+		return allNames; // return temporary array which stores the name only
+		
+		
 	}
+
+	
+	
 
 	
 	
