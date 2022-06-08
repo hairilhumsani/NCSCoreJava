@@ -7,25 +7,25 @@ public class MainClass implements EmployeeService{
 	}
 
 	@Override
-	public Employee[] getAllEmployees(String projectName) {
+	public Employee[] getAllEmployees(Project project) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int getSalary(int empId) {
+	public int getSalary(Project project) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int getTotalSalaryPaid(String projectName) {
+	public int getTotalSalaryPaid(int empId, Project project) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public String[] getEmployeeNames(String projectName) {
+	public String[] getEmployeeNames(Project project) {
 		// TODO Auto-generated method stub
 		return null;
 	}

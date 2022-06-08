@@ -4,10 +4,10 @@ public interface EmployeeService {
 	
 	public Employee[] getAllEmployees(Project project);
 	
-	public int getSalary(int empId);
+	public int getSalary(Project project);
 	
-	public int getTotalSalaryPaid(Project pro);
+	public int getTotalSalaryPaid(int empId , Project project);
 	
-	public String[] getEmployeeNames(String projectName);
+	public String[] getEmployeeNames(Project project);
 
 }
