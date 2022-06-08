@@ -72,7 +72,6 @@ public class MainClass implements EmployeeService{
 	
 	@Override
 	public Employee[] getAllEmployees(Project project) {
-		
 		return project.getResourceTeam();
 	}
 
@@ -105,6 +104,16 @@ public class MainClass implements EmployeeService{
 
 	@Override
 	public String[] getEmployeeNames(Project project) {
+
+		Employee[] employees = getAllEmployees(project);
+		String allnames[] = new String[employees.length];
+
+		int pos = 0;
+		for (Employee employee : employees)
+		{
+			
+		}
+
 		
 		return null;
 	}
