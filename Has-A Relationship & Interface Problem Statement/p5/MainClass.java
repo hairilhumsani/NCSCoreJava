@@ -35,7 +35,6 @@ public class MainClass implements EmployeeService{
 		resourceTeam1[2] = e3;
 			
 		p1.setResourceTeam(resourceTeam1);
-		
 	
 		return p1;
 	}
@@ -62,6 +61,13 @@ public class MainClass implements EmployeeService{
 		// 3. 
 		int totalSalaryPaid = obj.getTotalSalaryPaid(project);
 		System.out.println("Total Salary cost "+totalSalaryPaid);
+
+		String[] getAllName = obj.getEmployeeNames(project);
+		for (String lol : getAllName)
+		{
+			System.out.println(lol);
+		}
+		
 	}
 
 	public void displayEmployeeInfo(Employee e)
@@ -111,11 +117,11 @@ public class MainClass implements EmployeeService{
 		int pos = 0;
 		for (Employee employee : employees)
 		{
-			
+			allnames[pos++] = employee.getName();
 		}
 
 		
-		return null;
+		return allnames;
 	}
 
 	

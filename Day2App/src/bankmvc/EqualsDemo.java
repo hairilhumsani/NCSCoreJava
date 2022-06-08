@@ -16,8 +16,6 @@ public class EqualsDemo {
 		a2.setBalance(10000);
 		a2.setAccountType("Saving Acount");
 		
-		Account a3 = a1;
-		
 		int x = 10;
 		int y = 10;
 		

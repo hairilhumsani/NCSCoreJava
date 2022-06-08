@@ -1,7 +1,5 @@
 package bankmvc;
 
-import java.util.Scanner;
-
 public class BankOperation {
 
 	Account arr[] = new Account[1000];
