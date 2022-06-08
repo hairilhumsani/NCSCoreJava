@@ -8,9 +8,10 @@ public class EmailFilters {
 			"rajesh@outlook.com" };
 
 	public static void main(String[] args) {
-		int gmail = 0;
 		int outlook = 0;
 		int linkedin = 0;
+		int gmail = 0;
+		
 
 		for (String email : emails) {
 			email.split("@");
