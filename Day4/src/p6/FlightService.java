@@ -9,8 +9,4 @@ public interface FlightService {
 	public int getAveragePassengerAge(Flight flight);
 	public int getTotalFemalePassengersCount(Flight flight);
 	public int getTotalMalePassengersCount(Flight flight);
-	
-	
-	
-	
 }
