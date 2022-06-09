@@ -18,7 +18,7 @@ public class MainClass implements FlightService {
 			System.out.println("1. Get All Flight Names");
 			System.out.println("2. Get Flight Between Airport");
 			System.out.println("3. Get Passengers information");
-			System.out.println("Enter Option: ");
+			System.out.println("4. Get Female Passenger Count");
 			System.out.println("Enter Option: ");
 
 			int choice = sc.nextInt();
@@ -80,7 +80,7 @@ public class MainClass implements FlightService {
 					}
 				}
 
-				System.out.println("");
+				System.out.println("Total Female Passenger Count" + i);
 			}
 			}
 		}
