@@ -21,6 +21,7 @@ public class SerializableDemo {
 			// sd.writeFile(emp);
 			Employee e = sd.readFile();
 			System.out.println(e);
+
 			
 		} catch (Exception e) {
 			e.printStackTrace();
