@@ -73,7 +73,7 @@ public class MainClass  {
 
 	public void createProjectFile(Project project)
 	{
-		String rootPath = "C:\\Users\\Hp\\Desktop\\NCS Singapore\\";
+		String rootPath = "/Users/mh/Desktop/NCSCoreJava/";
 		String fileName = "projectDoc.txt";
 		File f = new File(rootPath+fileName);
 		

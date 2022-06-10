@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 public class SerializableDemo {
 	
-	String rootPath = "C:\\Users\\Hp\\Desktop\\NCS Singapore\\";
+	String rootPath = "/Users/mh/Desktop/NCSCoreJava/";
 	String fileName = "EmpSer5.txt";
 	File f = new File(rootPath+fileName);
 	
@@ -43,19 +43,21 @@ public class SerializableDemo {
 			oos.writeObject(emp);
 			
 			System.out.println("--- Employee Saved ----");
+			oos.close();
 			
 		
 	}
 	
 	public Employee readFile()throws Exception
 	{
-		Employee e = null;
+		Employee e = new Employee();
 		
 		FileInputStream fis = new FileInputStream(f);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		
 		
 		e = (Employee) ois.readObject();
+		ois.close();
 		
 	
 		

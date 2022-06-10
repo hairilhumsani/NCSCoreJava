@@ -2,8 +2,12 @@ package p5;
 
 import java.io.Serializable;
 
-public class Laptop {
+public class Laptop implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int laptopNumber;
 	
 	public Laptop(int laptopNumber) {

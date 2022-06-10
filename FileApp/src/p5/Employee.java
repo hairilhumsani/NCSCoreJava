@@ -10,7 +10,7 @@ public class Employee implements Serializable
 	private int empId;
 	private String name;
 	private int salary;
-	private transient Laptop laptop;
+	private Laptop laptop;
 	
 	public Employee() {
 		super();
@@ -69,7 +69,7 @@ public class Employee implements Serializable
 		System.out.println("laptop isbeing read");
 		ois.defaultReadObject();
 		
-		this.setLaptop(new Laptop(ois.readInt()));
+		//this.setLaptop(new Laptop(ois.readInt()));
 	}
 	
 	
