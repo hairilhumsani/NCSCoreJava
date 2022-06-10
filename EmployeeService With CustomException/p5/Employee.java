@@ -2,6 +2,10 @@ package p5;
 
 public class Employee {
 	
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", name=" + name + ", salary=" + salary + "]";
+	}
 	private int empId;
 	private String name;
 	private int salary;
