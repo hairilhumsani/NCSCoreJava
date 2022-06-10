@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 public class SerializableDemo {
 	
 	String rootPath = "C:\\Users\\Hp\\Desktop\\NCS Singapore\\";
-	String fileName = "EmpSer2.txt";
+	String fileName = "EmpSer5.txt";
 	File f = new File(rootPath+fileName);
 	
 	public static void main(String[] args) {
@@ -17,11 +17,15 @@ public class SerializableDemo {
 		
 		try {
 			
-			//Employee emp = new Employee(101,"Mike",2000);
-			// sd.writeFile(emp);
-			Employee e = sd.readFile();
+			  Employee emp = new Employee(101,"Mike",2000); 
+			  emp.setLaptop(new Laptop(555));
+			  sd.writeFile(emp);
+			 
+			
+		    Employee e = sd.readFile();
 			System.out.println(e);
-
+			System.out.println(e.getSalary());
+			System.out.println(e.getLaptop().getLaptopNumber());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -37,6 +41,7 @@ public class SerializableDemo {
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			
 			oos.writeObject(emp);
+			
 			System.out.println("--- Employee Saved ----");
 			
 		
@@ -49,7 +54,10 @@ public class SerializableDemo {
 		FileInputStream fis = new FileInputStream(f);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		
+		
 		e = (Employee) ois.readObject();
+		
+	
 		
 		return e;
 	}

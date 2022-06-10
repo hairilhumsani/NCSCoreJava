@@ -1,5 +1,7 @@
 package p5;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Employee implements Serializable
@@ -8,6 +10,7 @@ public class Employee implements Serializable
 	private int empId;
 	private String name;
 	private int salary;
+	private transient Laptop laptop;
 	
 	public Employee() {
 		super();
@@ -19,6 +22,15 @@ public class Employee implements Serializable
 		this.empId = empId;
 		this.name = name;
 		this.salary = salary;
+	}
+
+	
+	public Laptop getLaptop() {
+		return laptop;
+	}
+
+	public void setLaptop(Laptop laptop) {
+		this.laptop = laptop;
 	}
 
 	public int getEmpId() {
@@ -44,6 +56,21 @@ public class Employee implements Serializable
 		return "Employee [empId=" + empId + ", name=" + name + ", salary=" + salary + "]";
 	}
 	
+	/*
+	private void writeObject(ObjectOutputStream oos)throws Exception
+	{
+		oos.defaultWriteObject();
+		oos.writeInt(laptop.getLaptopNumber());
+		System.out.println("Laptop id is saved");
+	}
+	*/
+	private void readObject(ObjectInputStream ois)throws Exception
+	{
+		System.out.println("laptop isbeing read");
+		ois.defaultReadObject();
+		
+		this.setLaptop(new Laptop(ois.readInt()));
+	}
 	
 	
 	
