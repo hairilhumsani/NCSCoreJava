@@ -1,7 +1,8 @@
 package p4;
 
+import java.io.Serializable;
 
-public class Account {
+public class Account implements Serializable , Comparable<Account>{
 
 	private int accountNumber;
 	private String name ; 
@@ -44,14 +45,14 @@ public class Account {
 	@Override
 	public int hashCode() {
 		
-		System.out.println(" --->> Inside Hashcode :- "+this.name+" - "+this.accountNumber);
+		//System.out.println(" --->> Inside Hashcode :- "+this.name+" - "+this.accountNumber);
 		return (int)(name.length()+accountNumber+3);
 		//108
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		System.out.println(" ---------------->> Inside Equals :- "+this.name+" - "+this.accountNumber);
+		//System.out.println(" ---------------->> Inside Equals :- "+this.name+" - "+this.accountNumber);
 		if(obj instanceof Account)
 		{
 			Account account = (Account) obj;
@@ -67,10 +68,16 @@ public class Account {
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "Account Object :- "+name+"-"+hashCode()+"";
+		return "Account [accountNumber=" + accountNumber + ", name=" + name + ", balance=" + balance + "]";
+	}
+
+
+
+	@Override
+	public int compareTo(Account a) {
+		return this.balance - a.balance;
 	}
 	
 	
