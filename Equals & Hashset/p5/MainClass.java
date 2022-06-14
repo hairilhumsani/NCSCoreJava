@@ -121,7 +121,9 @@ public class MainClass {
 			SortByReviewRatings sortRw = new SortByReviewRatings();
 			// step 3:- call sort operation
 			Collections.sort(pro.getReviews(), sortRw);
-			printReview(pro.getReviews(), "Sort based on ReviewRating");
+			
+			printReview(pro.getReviews(), "Sort based on ReviewRating", pro.getProductName());
+			
 		}
 		// step 2:- create object of specific sorting class
 
@@ -134,8 +136,9 @@ public class MainClass {
 		}
 	}
 
-	public static void printReview(Collection<Review> collection, String tagLine) {
+	public static void printReview(Collection<Review> collection, String tagLine, String productName) {
 		System.out.println("\n-----" + tagLine + " -----\n");
+		System.out.println(productName);
 		for (Review review : collection) {
 			System.out.println(review);
 		}
