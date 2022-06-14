@@ -11,6 +11,7 @@ public class Product implements Serializable, Comparable<Product>{
 	private List<Review> reviews;
 	private int price;
 	private LocalDate launchDate;
+	private String productName;
 	
 	
 	public List<Review> getReviews() {
@@ -31,6 +32,16 @@ public class Product implements Serializable, Comparable<Product>{
 	public void setLaunchDate(LocalDate launchDate) {
 		this.launchDate = launchDate;
 	}
+	
+	public void setProductName(String productName)
+	{
+		this.productName = productName;
+	}
+	
+	public String getProductName()
+	{
+		return productName;
+	}
 	@Override
 	public int compareTo(Product o1) {
 		return this.price - o1.price;
@@ -38,7 +49,7 @@ public class Product implements Serializable, Comparable<Product>{
 	}
 	@Override
 	public String toString() {
-		return "Product [reviews=" + reviews + ", price=" + price + ", launchDate=" + launchDate + "]";
+		return productName + " [reviews=" + reviews + ", price=" + price + ", launchDate=" + launchDate + "]";
 	}
 	
 	

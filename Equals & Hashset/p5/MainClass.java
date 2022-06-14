@@ -40,6 +40,7 @@ public class MainClass {
 		list1.add(r5);
 
 		Product p1 = new Product();
+		p1.setProductName("Product 1");
 		p1.setLaunchDate(LocalDate.parse("2017-03-22"));
 		p1.setPrice(8);
 		p1.setReviews(list1);
@@ -62,6 +63,7 @@ public class MainClass {
 		list2.add(g3);
 
 		Product p2 = new Product();
+		p2.setProductName("Product 2");
 		p2.setLaunchDate(LocalDate.parse("2018-03-23"));
 		p2.setPrice(5);
 		p2.setReviews(list2);
@@ -79,6 +81,7 @@ public class MainClass {
 		list3.add(f2);
 
 		Product p3 = new Product();
+		p3.setProductName("Product 3");
 		p3.setLaunchDate(LocalDate.parse("2010-06-23"));
 		p3.setPrice(10);
 		p3.setReviews(list3);
