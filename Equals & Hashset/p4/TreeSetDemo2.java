@@ -27,9 +27,6 @@ public class TreeSetDemo2 {
 
 		// as we have data in form of TreeSet , not in a list
 
-		
-		
-		
 		// step 1 :- insert the whole list into a set
 		List<Account> list1 = new ArrayList<>();
 		list1.addAll(set);
@@ -38,10 +35,6 @@ public class TreeSetDemo2 {
 		// step 3:- call sort operation
 		Collections.sort(list1, sortNumber);
 		print(list1, "Sort based on Number");
-
-		
-		
-		
 
 		List<Account> list2 = new ArrayList<>();
 		list2.addAll(set);

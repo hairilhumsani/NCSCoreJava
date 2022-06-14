@@ -1,6 +1,8 @@
 package p5;
 
-public class Review {
+import java.io.Serializable;
+
+public class Review implements Serializable, Comparable<Review>{
 
 	private int starRating;
 
@@ -21,4 +23,17 @@ public class Review {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
+	@Override
+	public int compareTo(Review o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Review [starRating=" + starRating + ", comment=" + comment + "]";
+	}
+	
+	
 }
