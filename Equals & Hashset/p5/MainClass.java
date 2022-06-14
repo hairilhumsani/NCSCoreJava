@@ -23,7 +23,7 @@ public class MainClass {
 		Review r3 = new Review();
 		r3.setComment("Hello");
 		r3.setStarRating(5);
-		
+
 		Review r4 = new Review();
 		r3.setComment("Hello");
 		r3.setStarRating(5);
@@ -111,12 +111,30 @@ public class MainClass {
 		// step 3:- call sort operation
 		Collections.sort(lp3, sortLd);
 		print(lp3, "Sort based on LaunchDate");
+
+		List<Product> lp4 = new ArrayList<>();
+		lp4.addAll(set);
+		for (Product pro : lp4) {
+			SortByReviewRatings sortRw = new SortByReviewRatings();
+			// step 3:- call sort operation
+			Collections.sort(pro.getReviews(), sortRw);
+			printReview(pro.getReviews(), "Sort based on ReviewRating");
+		}
+		// step 2:- create object of specific sorting class
+
 	}
 
 	public static void print(Collection<Product> collection, String tagLine) {
 		System.out.println("\n-----" + tagLine + " -----\n");
 		for (Product product : collection) {
 			System.out.println(product);
+		}
+	}
+
+	public static void printReview(Collection<Review> collection, String tagLine) {
+		System.out.println("\n-----" + tagLine + " -----\n");
+		for (Review review : collection) {
+			System.out.println(review);
 		}
 	}
 
