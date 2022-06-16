@@ -39,24 +39,24 @@ public class MainClass implements EmployeeService {
 		p2.setProjectName("MyBankApp2");
 
 		Employee f1 = new Employee();
-		e1.setEmpId(1);
-		e1.setName("A");
-		e1.setSalary(2000);
+		f1.setEmpId(1);
+		f1.setName("A");
+		f1.setSalary(2000);
 
 		Employee f2 = new Employee();
-		e2.setEmpId(2);
-		e2.setName("B");
-		e2.setSalary(6000);
+		f2.setEmpId(2);
+		f2.setName("B");
+		f2.setSalary(6000);
 
 		Employee f3 = new Employee();
-		e3.setEmpId(3);
-		e3.setName("C");
-		e3.setSalary(2800);
+		f3.setEmpId(3);
+		f3.setName("C");
+		f3.setSalary(2800);
 
 		Employee f4 = new Employee();
-		e4.setEmpId(4);
-		e4.setName("D");
-		e4.setSalary(3000);
+		f4.setEmpId(4);
+		f4.setName("D");
+		f4.setSalary(3000);
 
 		Employee resourceTeam2[] = new Employee[3];
 		resourceTeam2[0] = f1;
@@ -80,24 +80,29 @@ public class MainClass implements EmployeeService {
 		// Calling implementation methods
 
 		// 1.
-		System.out.println(" List of All Employees works in Project " + project.getProjectName());
-		Employee arr[] = obj.getAllEmployees(project);
-		for (Employee employee : arr) {
-			obj.displayEmployeeInfo(employee);
+		
+		for (Project p : project)
+		{
+			System.out.println(" List of All Employees works in Project " + p.getProjectName());
+			Employee arr[] = obj.getAllEmployees(p);
+			for (Employee employee : arr) {
+				obj.displayEmployeeInfo(employee);
+			}
+
+			// 2.
+			int salary = obj.getSalary(2, p);
+			System.out.println(" salary is " + salary);
+
+			// 3.
+			int totalSalaryPaid = obj.getTotalSalaryPaid(p);
+			System.out.println("Total Salary cost " + totalSalaryPaid);
+
+			String[] getAllName = obj.getEmployeeNames(p);
+			for (String lol : getAllName) {
+				System.out.println(lol);
+			}
 		}
-
-		// 2.
-		int salary = obj.getSalary(2, project);
-		System.out.println(" salary is " + salary);
-
-		// 3.
-		int totalSalaryPaid = obj.getTotalSalaryPaid(project);
-		System.out.println("Total Salary cost " + totalSalaryPaid);
-
-		String[] getAllName = obj.getEmployeeNames(project);
-		for (String lol : getAllName) {
-			System.out.println(lol);
-		}
+		
 
 	}
 
