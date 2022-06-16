@@ -3,6 +3,7 @@ package p1;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
@@ -44,8 +45,15 @@ public class Demo1 {
 		}).get();
 		
 		*/
-		int result = myStream.min((o1,o2) -> o1-o2).get();
-		System.out.println(result);
+		Optional<Integer> minOperationOutput = myStream.min((o1,o2) -> (o1-o2));
+		
+		if(minOperationOutput.isPresent())
+		{
+			int result = minOperationOutput.get();
+			
+			System.out.println(result);
+		}
+		
 		
 	}
 	
