@@ -18,7 +18,6 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.text.PDFTextStripper;
 
 import casestudy.exceptions.InvalidCategryException;
 import casestudy.model.Order;
@@ -146,8 +145,9 @@ public class MainClass implements IOrderService, Comparable<Order> {
 
 		}
 	}
-	
+
 	public List<Order> getCSVFile() {
+		//Will get the csv file and turn into orderListClass to be use
 		String filePath = "/Users/mh/Desktop/NCSCoreJava/CaseStudy_CoreJava/Order.csv";
 		List<Order> totalOrder = new ArrayList<>();
 
@@ -306,39 +306,45 @@ public class MainClass implements IOrderService, Comparable<Order> {
 
 	@Override
 	public boolean generatePDFReports() {
-		boolean test;
+		boolean test = false;
 
 		try (PDDocument document = new PDDocument()) {
 
-			
 			PDPage my_page = new PDPage();
 			document.addPage(my_page);
-			document.save("/Users/mh/Desktop/NCSCoreJava/CaseStudy_CoreJava/orderReport.pdf");
 
-			File file = new File("/Users/mh/Desktop/NCSCoreJava/CaseStudy_CoreJava/orderReport.pdf");
-			PDDocument doc = PDDocument.load(file);
-			PDPage page = doc.getPage(0);
-			
-			PDPageContentStream contentStream = new PDPageContentStream(doc, page);
-			
+			PDPageContentStream contentStream = new PDPageContentStream(document, my_page);
+
 			contentStream.beginText();
 			contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
-			contentStream.newLineAtOffset(25, 500);
-			
-			String text = "This is the sample document and we are adding content to it.";
-			contentStream.showText(text);  
-			
-			
+			contentStream.newLineAtOffset(25, 700);
+			contentStream.setLeading(14.5f);
+
+			List<Order> listDelivered = filterOrders("delivered");
+			List<Order> listCancelled = filterOrders("cancelled");
+
+			String line = "-------------------------------------";
+
+			String heading = "No.of Delivered      " + listDelivered.size();
+			String heading2 = "No.of Cancelled      " + listCancelled.size();
+
+			contentStream.showText(line);
+			contentStream.newLine();
+			contentStream.showText(heading);
+			contentStream.newLine();
+			contentStream.showText(line);
+			contentStream.newLine();
+			contentStream.showText(heading2);
+
 			contentStream.endText();
-			document.save(new File("/Users/mh/Desktop/NCSCoreJava/CaseStudy_CoreJava/orderReport.pdf"));
+
 			contentStream.close();
-			
+			document.save(new File("/Users/mh/Desktop/NCSCoreJava/CaseStudy_CoreJava/orderReport.pdf"));
 			document.close();
 
 			test = true;
 
 		} catch (IOException e) {
-			test = false;
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
