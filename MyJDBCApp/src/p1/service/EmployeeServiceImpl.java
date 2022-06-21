@@ -26,13 +26,15 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public Employee getEmployeeByID(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee getEmployeeByID(int id) throws SQLException {
+		
+		Employee output = empDAO.getEmployeeByID(id);
+		
+		return output;
 	}
 
 	@Override
-	public List<Employee> getAllEmploye() {
+	public List<Employee> getAllEmploye()throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
