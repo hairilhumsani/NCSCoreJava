@@ -24,9 +24,10 @@ public class CourseServiceImpl implements CourseService{
 	}
 
 	@Override
-	public Course getCoursebyId(int id) {
+	public Course getCoursebyId(int id) throws SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		Course output = courseDao.getCoursebyId(id);
+		return output;
 	}
 
 	@Override

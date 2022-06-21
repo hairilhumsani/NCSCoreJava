@@ -1,12 +1,11 @@
-package app.dao;
+package app.service;
 
 import java.sql.SQLException;
 import java.util.List;
 
 import app.model.Student;
 
-
-public interface StudentDAO {
+public interface StudentService {
 	public boolean addStudent(Student student)throws SQLException;
 	public Student getStudentByCourse(int id) throws SQLException;
 	public Student getStudentById(int id);
