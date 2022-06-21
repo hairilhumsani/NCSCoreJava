@@ -2,7 +2,6 @@ package p1.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class MySQLConnection {
@@ -18,7 +17,7 @@ public class MySQLConnection {
     		try {
 				
     			Class.forName("com.mysql.cj.jdbc.Driver");
-    			mySql = DriverManager.getConnection(url,"root","admin");
+    			mySql = DriverManager.getConnection(url,"root","Mohammadhairil27");
     	        System.out.println("MySQL Connection :- "+mySql);
     	        
 			} 
