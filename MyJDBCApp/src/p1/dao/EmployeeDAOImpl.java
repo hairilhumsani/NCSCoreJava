@@ -2,6 +2,7 @@ package p1.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -10,10 +11,12 @@ import p1.model.Employee;
 public class EmployeeDAOImpl implements EmployeeDAO {
 
 	Connection con;
+	ProjectDAO projectDAO ;
 	
 	public EmployeeDAOImpl() {
 		
 		con = MySQLConnection.mySql;
+		projectDAO = new ProjectDAOImpl();
 	}
 	
 	@Override
@@ -30,7 +33,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		ps.setInt(1, e.getEmpId());
 		ps.setString(2,e.getName());
 		
-		int rowsEffected = ps.executeUpdate();
+		int rowsEffected = ps.executeUpdate(); // for DML (insert,update ,delete)
 		
 		boolean status = (rowsEffected == 1)?true:false;
 		
@@ -38,19 +41,48 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public Employee getEmployeeByID(int id) {
+	public Employee getEmployeeByID(int id) throws SQLException
+	{
+		Employee output = null;
+		
+		String query = "select * from ncsEmployee where empid = ?"; // DQL 
+		PreparedStatement ps = con.prepareStatement(query);
+		ps.setInt(1, id);
+		
+		ResultSet rs =ps.executeQuery();
+		
+		if(rs!=null)
+		{
+			while(rs.next()) // its validate whether rs has value or not & if there is any value then points to next value
+			{
+				int empId = rs.getInt(1);
+				String name = rs.getString(2);
+				int projectId = rs.getInt(3);
+				String email = rs.getString("email");
+				int bankAccount = rs.getInt("bankaccount");
+				String address= rs.getString("address");
+				String designation = rs.getString("designation");
+				int salary = rs.getInt("salary");
+				
+				
+				output = new Employee(empId, name, projectId, email, bankAccount, address, designation, salary);
+				
+				
+			}
+			
+		}
+		
+		return output;
+	}
+
+	@Override
+	public List<Employee> getAllEmploye() throws SQLException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Employee> getAllEmploye() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Employee doLinkProjectWithEmployee(int empId, int projetId) {
+	public Employee doLinkProjectWithEmployee(int empId, int projetId)throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}

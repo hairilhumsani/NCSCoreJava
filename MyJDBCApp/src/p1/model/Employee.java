@@ -12,6 +12,7 @@ public class Employee implements Comparable<Employee>,Serializable{
 	private String address;
 	private String designation;
 	private int salary;
+	
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
