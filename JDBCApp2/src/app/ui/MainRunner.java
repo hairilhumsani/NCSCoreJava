@@ -42,6 +42,7 @@ public class MainRunner {
 			System.out.println("3. Add Student to Course");
 			System.out.println("4. View All Course");
 			System.out.println("5. View Course By ID and the student");
+			System.out.println("6. Delete Course");
 			System.out.println("0. EXIT");
 
 			System.out.println("\n Enter Ur Option :- ");
@@ -62,6 +63,10 @@ public class MainRunner {
 
 			case 5:
 				app.viewEmployeeetails();
+				break;
+
+			case 6:
+				app.doDeleteCourse();
 				break;
 			case 0:
 				System.exit(0);
@@ -181,7 +186,7 @@ public class MainRunner {
 			System.out.println("location");
 			String location = scLocation.nextLine();
 
-			Student student = new Student(6, "hairil", "email" , 4, "Singapore");
+			Student student = new Student(6, "hairil", "email", 4, "Singapore");
 			boolean status = studentService.addStudent(student);
 			if (status == true) {
 				System.out.println(student.getStudentId() + " Saved in the Database " + student);
@@ -195,6 +200,14 @@ public class MainRunner {
 			e.printStackTrace();
 		}
 
+	}
+
+	public void doDeleteCourse() {
+		System.out.println("Enter Project Number to be Deleted :- ");
+		int courseId = Integer.parseInt(sc.nextLine());
+
+		boolean status = courseService.deleteCourse(courseId);
+		System.out.println(status);
 	}
 
 }

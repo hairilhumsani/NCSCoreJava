@@ -35,7 +35,7 @@ public class ProjectServiceImpl implements ProjectService {
 
 
 	@Override
-	public boolean addProkect(Project p) throws SQLException, InvalidProjectIdException {
+	public boolean addProject(Project p) throws SQLException {
 		
 		return projectDAO.addProject(p);
 	}

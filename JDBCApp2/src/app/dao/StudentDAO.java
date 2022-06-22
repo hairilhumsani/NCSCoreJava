@@ -11,5 +11,6 @@ public interface StudentDAO {
 	public Student getStudentByCourse(int id) throws SQLException;
 	public Student getStudentById(int id);
 	public List<Student> getAllStudent();
+	public boolean deleteStudent(int id) throws SQLException;
 	//public Student doLinkProjectWithEmployee(int empId,int projetId);
 }

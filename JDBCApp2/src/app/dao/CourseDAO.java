@@ -10,5 +10,6 @@ public interface CourseDAO {
 	public Course getCoursebyId(int id) throws SQLException;
 	public List<Course> getAllCourse() throws SQLException;
 	public Course getCoursesByName(String courseName) throws SQLException;
+	public boolean deleteCourse(int id);
 	//public Student doLinkProjectWithEmployee(int empId,int projetId);
 }

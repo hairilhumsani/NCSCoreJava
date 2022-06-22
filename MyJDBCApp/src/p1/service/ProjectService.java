@@ -9,6 +9,6 @@ public interface ProjectService {
 	
 	public Project getProjectById(int projectNumber)throws SQLException;
 	public boolean deleteProject(int projectId);
-	public boolean addProkect(Project p)throws SQLException,InvalidProjectIdException;
+	public boolean addProject(Project p)throws SQLException;
 
 }

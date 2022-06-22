@@ -3,6 +3,7 @@ package app.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.util.List;
 import java.sql.Connection;
 
@@ -19,20 +20,20 @@ public class StudentDAOImpl implements StudentDAO {
 	@Override
 	public boolean addStudent(Student student) throws SQLException {
 		String query = "insert into student (studentId, name, email, enrollCourse, location ) values (?,?,?,?,?);";
-		
+
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.setInt(1, student.getStudentId());
-		ps.setString(2,student.getName());
+		ps.setString(2, student.getName());
 		ps.setString(3, student.getEmail());
 		ps.setInt(4, student.getEnrollCourse());
 		ps.setString(5, student.getLocation());
-		
+
 		int rowsEffected = ps.executeUpdate();
 
 		boolean status = (rowsEffected == 1) ? true : false;
 
 		return status;
-		
+
 	}
 
 	@Override
@@ -68,4 +69,9 @@ public class StudentDAOImpl implements StudentDAO {
 		return null;
 	}
 
+	@Override
+	public boolean deleteStudent(int id) throws SQLException {
+		return false;
+
+	}
 }

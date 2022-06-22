@@ -84,7 +84,7 @@ public class MainRunner {
 			p.setProjectName("test project");
 			p.setProjectHeadEmail("test@gmail.com");
 			
-			boolean status = projectService.addProkect(p);
+			boolean status = projectService.addProject(p);
 			System.out.println(status);
 		} 
 		catch (SQLException e) {

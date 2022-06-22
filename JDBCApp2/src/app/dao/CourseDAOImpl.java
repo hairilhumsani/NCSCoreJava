@@ -1,6 +1,7 @@
 package app.dao;
 
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
@@ -115,6 +116,49 @@ public class CourseDAOImpl implements CourseDAO {
 		}
 
 		return output;
+	}
+
+	@Override
+	public boolean deleteCourse(int id) {
+
+		boolean isDeleted = false;
+
+		String updateStudentQuery = "update student set enrollCourse = null where enrollCourse = ?";
+		String deleteCourseQuery = "delete from course where courseId = ?";
+		try {
+
+			con.setAutoCommit(false);
+
+			// update employee table
+			PreparedStatement psUpdate = con.prepareStatement(updateStudentQuery);
+			psUpdate.setInt(1, id);
+
+			int rowsEffected = psUpdate.executeUpdate();
+			System.err.println("INFO : " + LocalTime.now() + " rows effected after update :- " + rowsEffected);
+
+			// delete project table
+			PreparedStatement psDelete = con.prepareStatement(deleteCourseQuery);
+			psDelete.setInt(1, id);
+
+			int deleteRowsEffected = psDelete.executeUpdate();
+			System.err.println("INFO : " + LocalTime.now() + " rows effected after delete :- " + rowsEffected);
+
+			if (rowsEffected != 0 && deleteRowsEffected != 0) {
+				con.commit();
+				System.err.println("INFO : " + LocalTime.now() + " Data based Commited !!!");
+				isDeleted = true;
+			}
+
+		} catch (Exception e) {
+			try {
+				System.err.println("Inside catch Block :- " + e);
+				con.rollback();
+			} catch (SQLException e1) {
+				System.out.println("Exception during roll back " + e);
+			}
+		}
+
+		return isDeleted;
 	}
 
 }
