@@ -1,13 +1,13 @@
 package app.model;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Instructor {
 
 	
 	private int instructorId;
 	private String instructorName;
-	private LocalDate dateOfJoining;
+	private Date dateOfJoining;
 	private String location;
 	
 	
@@ -23,16 +23,23 @@ public class Instructor {
 	public void setInstructorName(String instructorName) {
 		this.instructorName = instructorName;
 	}
-	public LocalDate getDateOfJoining() {
+	public Date getDateOfJoining() {
 		return dateOfJoining;
 	}
-	public void setDateOfJoining(LocalDate dateOfJoining) {
+	public void setDateOfJoining(Date dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
 	public String getLocation() {
 		return location;
 	}
 	public void setLocation(String location) {
+		this.location = location;
+	}
+	public Instructor(int instructorId, String instructorName, Date dateOfJoining, String location) {
+		super();
+		this.instructorId = instructorId;
+		this.instructorName = instructorName;
+		this.dateOfJoining = dateOfJoining;
 		this.location = location;
 	}
 	

@@ -50,4 +50,12 @@ public class Course {
 		this.exams = exams;
 	}
 
+	@Override
+	public String toString() {
+		return "Course [courseId=" + courseId + ", courseName=" + courseName + ", duration=" + duration + ", exams="
+				+ exams + "]";
+	}
+	
+	
+
 }

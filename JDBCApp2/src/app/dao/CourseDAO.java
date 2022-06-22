@@ -8,6 +8,7 @@ import app.model.Course;
 public interface CourseDAO {
 	public boolean addCourse(Course course)throws SQLException;
 	public Course getCoursebyId(int id) throws SQLException;
-	public List<Course> getAllCourse();
+	public List<Course> getAllCourse() throws SQLException;
+	public Course getCoursesByName(String courseName) throws SQLException;
 	//public Student doLinkProjectWithEmployee(int empId,int projetId);
 }

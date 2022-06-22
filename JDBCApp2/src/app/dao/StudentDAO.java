@@ -10,6 +10,6 @@ public interface StudentDAO {
 	public boolean addStudent(Student student)throws SQLException;
 	public Student getStudentByCourse(int id) throws SQLException;
 	public Student getStudentById(int id);
-	public List<Student> getAllEmploye();
+	public List<Student> getAllStudent();
 	//public Student doLinkProjectWithEmployee(int empId,int projetId);
 }

@@ -1,25 +1,35 @@
 package app.ui;
 
 import java.sql.Date;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 import app.dto.CourseDTO;
 import app.model.Course;
+import app.model.Instructor;
 import app.model.Student;
 import app.service.CourseService;
 import app.service.CourseServiceImpl;
+import app.service.InstructorService;
+import app.service.InstructorServiceImpl;
 import app.service.StudentService;
 import app.service.StudentServiceImpl;
 
 public class MainRunner {
 
 	Scanner sc = new Scanner(System.in);
+	Scanner scInt = new Scanner(System.in);
+	Scanner scLocation = new Scanner(System.in);
+
 	CourseService courseService;
 	StudentService studentService;
+	InstructorService instructorService;
 
 	public MainRunner() {
 		courseService = new CourseServiceImpl();
 		studentService = new StudentServiceImpl();
+		instructorService = new InstructorServiceImpl();
 	}
 
 	public static void main(String[] args) {
@@ -28,10 +38,10 @@ public class MainRunner {
 		while (true) {
 			System.out.println("\n\n ============== Link Panel =====================");
 			System.out.println("1. Insert Course ");
-			System.out.println("2. Add Project");
-			System.out.println("3. Add Project to E,ployee");
-			System.out.println("4. View All Employee");
-			System.out.println("5. View Employee By ID ");
+			System.out.println("2. Insert Student");
+			System.out.println("3. Add Student to Course");
+			System.out.println("4. View All Course");
+			System.out.println("5. View Course By ID and the student");
 			System.out.println("0. EXIT");
 
 			System.out.println("\n Enter Ur Option :- ");
@@ -41,14 +51,21 @@ public class MainRunner {
 			case 1:
 				app.saveEmployee();
 				break;
-				
+
+			case 3:
+				app.addStudentToCourse();
+				break;
+
+			case 4:
+				app.getAllCourse();
+				break;
+
 			case 5:
 				app.viewEmployeeetails();
 				break;
 			case 0:
 				System.exit(0);
-				
-			
+
 			}
 
 		} // end of while
@@ -120,6 +137,64 @@ public class MainRunner {
 		System.out.println("Exams :- " + dto.getExams());
 		System.out.println("Students :- " + dto.getStudentName());
 		System.out.println("************************************************");
+	}
+
+	public void getAllCourse() {
+		List<Course> course;
+
+		try {
+			course = courseService.getAllCourse();
+			System.out.println(course);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void addStudentToCourse() {
+
+		List<Course> course;
+		List<Instructor> instructor;
+
+		try {
+			System.out.println("Getting Courses.....");
+			course = courseService.getAllCourse();
+			for (Course courses : course) {
+				System.out.println(courses);
+			}
+
+			System.out.println("Getting Instructors Locations.....");
+
+			instructor = instructorService.getAllIntructors();
+			for (Instructor instructors : instructor) {
+				System.out.println(instructors.getLocation());
+			}
+
+			System.out.println("Add student details");
+			System.out.println("studentId?");
+			int studentId = scInt.nextInt();
+			System.out.println("Name?");
+			String name = sc.nextLine();
+			System.out.println("Email?");
+			String email = sc.nextLine();
+			System.out.println("Course Id");
+			int courseId = sc.nextInt();
+			System.out.println("location");
+			String location = scLocation.nextLine();
+
+			Student student = new Student(6, "hairil", "email" , 4, "Singapore");
+			boolean status = studentService.addStudent(student);
+			if (status == true) {
+				System.out.println(student.getStudentId() + " Saved in the Database " + student);
+			} else {
+				throw new Exception("Unknown SQL Exception ");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 }

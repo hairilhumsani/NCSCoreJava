@@ -1,6 +1,7 @@
 package app.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.Date;
@@ -67,9 +68,53 @@ public class CourseDAOImpl implements CourseDAO {
 	}
 
 	@Override
-	public List<Course> getAllCourse() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Course> getAllCourse() throws SQLException {
+		
+		Course output = null;
+		String query = "select * from course";
+		List<Course> course = new ArrayList<>();
+
+		PreparedStatement ps = con.prepareStatement(query);
+		ResultSet rs = ps.executeQuery();
+
+		if (rs != null) {
+			while (rs.next()) {
+				int courseId = rs.getInt(1);
+				String name = rs.getString(2);
+				Date duration = rs.getDate(3);
+				String exams = rs.getString(4);
+
+				output = new Course(courseId, name, duration, exams);
+				course.add(output);
+
+			}
+		}
+
+		return course;
+	}
+
+	@Override
+	public Course getCoursesByName(String courseName) throws SQLException {
+		Course output = null;
+		String query = "select courseId from course where courseName = ?";
+
+		PreparedStatement ps = con.prepareStatement(query);
+		ps.setString(1, courseName);
+		ResultSet rs = ps.executeQuery();
+
+		if (rs != null) {
+			while (rs.next()) {
+				int courseId = rs.getInt(1);
+				String name = rs.getString(2);
+				Date duration = rs.getDate(3);
+				String exams = rs.getString(4);
+
+				output = new Course(courseId, name, duration, exams);
+
+			}
+		}
+
+		return output;
 	}
 
 }

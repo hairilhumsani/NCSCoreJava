@@ -31,9 +31,17 @@ public class CourseServiceImpl implements CourseService{
 	}
 
 	@Override
-	public List<Course> getAllCourse() {
+	public List<Course> getAllCourse() throws SQLException {
+		
+		List<Course> output = courseDao.getAllCourse();
 		// TODO Auto-generated method stub
-		return null;
+		return output;
+	}
+
+	@Override
+	public Course getCoursesByName(String courseName) throws SQLException {
+		Course output = courseDao.getCoursesByName(courseName);
+		return output;
 	}
 
 }

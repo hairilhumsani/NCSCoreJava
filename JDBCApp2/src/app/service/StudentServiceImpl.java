@@ -19,8 +19,8 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public boolean addStudent(Student student) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		boolean status = studentdao.addStudent(student);
+		return status;
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public List<Student> getAllEmploye() {
+	public List<Student> getAllStudent() {
 		// TODO Auto-generated method stub
 		return null;
 	}

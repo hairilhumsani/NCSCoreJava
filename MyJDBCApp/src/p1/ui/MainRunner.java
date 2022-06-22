@@ -1,8 +1,10 @@
 package p1.ui;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import p1.dto.EmployeeDTO;
+import p1.execptions.InvalidProjectIdException;
 import p1.model.Employee;
 import p1.model.Project;
 import p1.service.EmployeeService;
@@ -32,9 +34,16 @@ public class MainRunner {
 			System.out.println("\n=======================================================");
 			System.out.println("1. Insert Employee ");
 			System.out.println("2. Add Project");
-			System.out.println("3. Add Project to E,ployee");
+			System.out.println("3. Add Project to Employee");
 			System.out.println("4. View All Employee");
 			System.out.println("5. View Employee By ID ");
+			System.out.println("6. Delete Project");
+			System.out.println("7. Add Project");
+			System.out.println("8. Projects, Employee Details"); // project Id , project Name , Employee Id, employee email
+			                                                     // Project Id , total Salary , 
+										// deleteEmployee
+										// insert employees in batch 	
+								// convert all DML queries in transactions
 			System.out.println("0. EXIT");
 			
 			System.out.println("\n Enter Ur Option :- ");
@@ -52,12 +61,60 @@ public class MainRunner {
 				case 5:
 					app.viewEmployeeetails();
 					break;
+				case 6: 
+					try {
+						app.doDeleteProject();
+						break;
+					} catch (Exception e) {
+						System.err.println("ERROR : - "+e);
+					}
+				case 7: 
+					app.addProject();break;
 			}
 			
 		}//end of while
 	}//end of main
 	
 	
+	private void addProject() {
+		try {
+			
+			Project p = new Project();
+			p.setProjectNumber(450);
+			p.setProjectName("test project");
+			p.setProjectHeadEmail("test@gmail.com");
+			
+			boolean status = projectService.addProkect(p);
+			System.out.println(status);
+		} 
+		catch (SQLException e) {
+			System.out.println("Click the below and download the software update..");
+		}
+		catch(InvalidProjectIdException e)
+		{
+			System.err.println("ERROR :- "+e);
+		}
+		
+		
+		
+	}
+
+	private void doDeleteProject()throws InvalidProjectIdException {
+		
+			System.out.println("Enter Project Number to be Deleted :- ");
+			int projectNumber = Integer.parseInt(sc.nextLine());
+			
+			if(projectNumber >50)
+			{
+				throw new InvalidProjectIdException(projectNumber+"");
+				
+			}
+			
+			boolean status = projectService.deleteProject(projectNumber);
+			System.out.println(status);
+
+	}
+
 	public void viewEmployeeetails()
 	{
 		System.out.println("Enter Employee ID to be Searched :- ");
