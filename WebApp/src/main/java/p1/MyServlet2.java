@@ -51,7 +51,7 @@ public class MyServlet2 extends HttpServlet {
 			
 			if(username.equals("mike") & password.equals("123"))
 			{
-				browser.print("Welcome "+username);
+				browser.print("<br>Welcome "+username+"</br>");
 			}
 			else
 			{
