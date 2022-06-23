@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  
+  
+  <context-param>
+  	<param-name>ServerIPAddress</param-name>
+  	<param-value>168.6.9.17</param-value>
+  </context-param>
+  
+  
+  <display-name>App1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ABC</display-name>
+    <servlet-name>ABC</servlet-name>
+    <servlet-class>p1.ABC</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ABC</servlet-name>
+    <url-pattern>/ABC</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>X</servlet-name>
+    <servlet-class>p2.MyNewServlet</servlet-class>
+    <init-param>
+    	<param-name>MathsTeacherName</param-name>
+    	<param-value>Mr. Peter</param-value>
+    </init-param>
+ </servlet>
+ 
+  <servlet-mapping>
+    <servlet-name>X</servlet-name>
+    <url-pattern>/MyNewServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>X</servlet-name>
+    <url-pattern>/a</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>MyCommonServlet</display-name>
+    <servlet-name>MyCommonServlet</servlet-name>
+    <servlet-class>p2.MyCommonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyCommonServlet</servlet-name>
+    <url-pattern>/MyCommonServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NextServlet</display-name>
+    <servlet-name>NextServlet</servlet-name>
+    <servlet-class>p3.NextServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NextServlet</servlet-name>
+    <url-pattern>/NextServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
