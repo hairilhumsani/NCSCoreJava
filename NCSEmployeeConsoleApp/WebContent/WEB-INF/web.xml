@@ -2,16 +2,44 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>NCSEmployeeConsoleApp</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    
+    <welcome-file>LoginForm.html</welcome-file>
   </welcome-file-list>
   <servlet>
-    
     <servlet-name>viewall</servlet-name>
     <servlet-class>com.ncs.ui.ViewAllEmployeeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>viewall</servlet-name>
     <url-pattern>/allemployee</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddEmployeeServlet</display-name>
+    <servlet-name>AddEmployeeServlet</servlet-name>
+    <servlet-class>com.ncs.web.AddEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddEmployeeServlet</servlet-name>
+    <url-pattern>/addEmp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.ncs.web.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeeHomePageServlet</display-name>
+    <servlet-name>EmployeeHomePageServlet</servlet-name>
+    <servlet-class>com.ncs.ui.EmployeeHomePageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeHomePageServlet</servlet-name>
+    <url-pattern>/homepage</url-pattern>
   </servlet-mapping>
 </web-app>
