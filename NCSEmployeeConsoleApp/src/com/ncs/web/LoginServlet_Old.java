@@ -8,14 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.ncs.model.Laptop;
 
 /**
- * this class is based on Session scope
+ * This class based on request scope only
  */
-public class LoginServlet extends HttpServlet {
+public class LoginServlet_Old extends HttpServlet {
 
 	int x = 10;
 	@Override
@@ -51,20 +48,12 @@ public class LoginServlet extends HttpServlet {
 		
 		//-------------------------------------------------------------------------------
 		
-		if(isValidUser) // control goes here , if users are validated
+		if(isValidUser) 
 		{
-			
-			HttpSession session = req.getSession(true); // becoz user is validated , so create new session
-			session.setAttribute("username",username); // in side session we are adding two attributes 
-			session.setAttribute("role", role);       // username & role
-			
-			Laptop dellLaptop = new Laptop();
-			dellLaptop.laptopName = "Dell - ABC - 123"; // xyz 
-			
-			session.setAttribute("user-device", dellLaptop);
-			
-			resp.sendRedirect("homepage");
-			
+			req.setAttribute("role", role);
+			System.out.println("--->> 1. Inside Login Servlet - Ok for Mike");
+			RequestDispatcher rd = req.getRequestDispatcher("homepage");
+			rd.forward(req, resp);
 		}
 		else 
 		{

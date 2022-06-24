@@ -14,7 +14,7 @@ import com.ncs.service.EmployeeService;
 import com.ncs.service.EmployeeServiceImpl;
 
 /**
- * Servlet implementation class AddEmployeeServlet
+ * Class focused on Request Scope only
  */
 public class AddEmployeeServlet extends HttpServlet {
 	@Override

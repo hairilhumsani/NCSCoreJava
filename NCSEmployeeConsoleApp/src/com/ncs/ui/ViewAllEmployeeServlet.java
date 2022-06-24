@@ -4,17 +4,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.ncs.model.Employee;
-import com.ncs.service.EmployeeService; 
+import com.ncs.service.EmployeeService;
 import com.ncs.service.EmployeeServiceImpl;
-
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
-
 
 /**
  * Servlet implementation class ViewAllEmployeeServlet
@@ -72,8 +69,8 @@ public class ViewAllEmployeeServlet extends HttpServlet {
 			browser.print("<td>"+employee.getAddress()+"</td>");
 			browser.print("<td>"+employee.getSalary()+"</td>");
 			
-			browser.print("<td> <a href='#'> edit </a> </td>");
-			browser.print("<td> <a href='#'> delet </a></td>");
+			browser.print("<td> <a href='EditServlet'> edit </a> </td>");
+			browser.print("<td> <a href='DeleteServlet?empid="+employee.getEmpId()+"'> delete </a></td>");
 			
 					
 			browser.print("<tr>");
