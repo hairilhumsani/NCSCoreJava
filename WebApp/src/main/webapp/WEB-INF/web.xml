@@ -12,7 +12,7 @@
   </servlet-mapping>
   <display-name>WebApp</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>Login.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
@@ -31,12 +31,22 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>AppServlet</display-name>
-    <servlet-name>AppServlet</servlet-name>
-    <servlet-class>com.ncs.servlet.AppServlet</servlet-class>
+    <display-name>GetAllEmployeeServlet</display-name>
+    <servlet-name>GetAllEmployeeServlet</servlet-name>
+    <servlet-class>com.ncs.servlet.GetAllEmployeeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AppServlet</servlet-name>
-    <url-pattern>/AppServlet</url-pattern>
+    <servlet-name>GetAllEmployeeServlet</servlet-name>
+    <url-pattern>/GetAllEmployeeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.ncs.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
 </web-app>

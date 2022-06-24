@@ -18,7 +18,7 @@ import com.ncs.service.CourseServiceImpl;
 /**
  * Servlet implementation class AppServlet
  */
-public class AppServlet extends HttpServlet {
+public class GetAllEmployeeServlet extends HttpServlet {
 
 	CourseService courseService;
 	private static final long serialVersionUID = 1L;
@@ -26,7 +26,7 @@ public class AppServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AppServlet() {
+	public GetAllEmployeeServlet() {
 		courseService = new CourseServiceImpl();
 	}
 
@@ -38,33 +38,7 @@ public class AppServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.setContentType("text/html");
-		PrintWriter browser = response.getWriter();
-
-		try {
-			
-			browser.print(
-					"<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css\" rel=\"stylesheet\">\n"
-							+ "<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js\"></script>");
-			List<Course> courseList = courseService.getAllCourse();
-
-			browser.print("<table class=\"table\">\n" + "<thead class=\"thead thead-dark\">\n" + "  <tr>\n"
-					+ "    <th scope=\"col\">#</th>\n" + "<th scope=\"col\">Course Name</th>\n"
-					+ "    <th scope=\"col\">Exams</th>\n" + "    <th scope=\"col\">Duration</th>\n"
-					+ "    <th scope=\"col\"></th>\n" + "  </tr>\n" + "</thead>");
-			browser.print("<tbody>");
-			for (Course course : courseList) {
-				browser.print("<tr>\n" + "    <th scope=\"row\">" + course.getCourseId() + "</th>\n" + "    <td>"
-						+ course.getCourseName() + "</td>\n" + "    <td>" + course.getExams() + "</td>\n" + "    <td>"
-						+ course.getDuration() + "</td>\n" + "    <td>"
-						+ "<button type=\"button\" class=\"btn btn-outline-primary\">Delete</button>"
-						+ "</td>  </tr>");
-			}
-			browser.print("</tbody>\n" + "</table>");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 
 	}
 
@@ -74,8 +48,42 @@ public class AppServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String color = (String)request.getAttribute("color");
+		
+		
+		response.setContentType("text/html");
+		PrintWriter browser = response.getWriter();
+
+		try {
+			
+			browser.print(
+					"<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css\" rel=\"stylesheet\">\n"
+							+ "<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js\"></script>");
+			List<Course> courseList = courseService.getAllCourse();
+			browser.print("<body>");
+			browser.print("<table class=\"table\">\n" + "<thead class=\"thead thead-dark\">\n" + "  <tr>\n"
+					+ "    <th scope=\"col\">#</th>\n" + "<th scope=\"col\">Course Name</th>\n"
+					+ "    <th scope=\"col\">Exams</th>\n" + "    <th scope=\"col\">Duration</th>\n"
+					+ "    <th scope=\"col\"></th>\n" + "  </tr>\n" + "</thead>");
+			browser.print("<tbody>");
+			for (Course course : courseList) {
+				browser.print("<tr>\n" + "    <th scope=\"row\">" + course.getCourseId() + "</th>\n" + "    <td>"
+						+ course.getCourseName() + "</td>\n" + "    <td>" + course.getExams() + "</td>\n" + "    <td>"
+						+ course.getDuration() + "</td>\n" + "    <td>"
+						+ "<button style=\"background-color:"+color+"\" type=\"button\" class=\"btn btn-outline-primary\">Delete</button>"
+						+ "</td>  </tr>");
+			}
+			browser.print("</tbody>\n" + "</table>");
+			browser.print("</body>");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
 	}
 
 };
