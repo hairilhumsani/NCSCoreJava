@@ -19,4 +19,14 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TransactionSaveServlet</display-name>
+    <servlet-name>TransactionSaveServlet</servlet-name>
+    <servlet-class>p1.TransactionSaveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransactionSaveServlet</servlet-name>
+    <url-pattern>/TransactionSaveServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

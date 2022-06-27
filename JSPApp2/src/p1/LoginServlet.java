@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class LoginServlet
- */
+
 public class LoginServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,12 +29,17 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("username", username);
 			session.setAttribute("transactions", userTransactions);
 			
-			System.out.println("----->> INFO :- "+userTransactions.size());
 			
 			
-			request.getRequestDispatcher("UserPage.jsp").forward(request, response);
+			
+			response.sendRedirect("AddTransaction.jsp");;
 			
 		}
+		else
+		{
+			response.sendRedirect("LoginPage.jsp");
+		}
+		
 		
 	}
 

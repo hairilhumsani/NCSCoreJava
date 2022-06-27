@@ -7,20 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+ String username = (String)session.getAttribute("username");
+%>
 
- 
-
- <form action="LoginServlet" method="post">
-	usrname <input type="text" name="username" value="mike"> <br/>
-	password<input type="password" value="123" name="password"> <br/>
-	<input type="submit"> 
-</form>
-
- 
-
-
-
-
-
+<div style="background-color: gray; width: 100%;height: 10%">
+	<div style="margin-left: 75%; font-size:medium; color:white;">
+		Welcome <%=username%>
+	</div>
+</div>
 </body>
 </html>
