@@ -24,8 +24,36 @@
 	Enter Account to Transfer <input type="number" name="secondAccount"><br/>
 	
 	<input type="Submit">
+	
+	
 </form>
 <hr/>
+
+<% 
+	String pageToDisplay = (String)session.getAttribute("pageToDisplay");
+%>
+<!-- 
 <%@include file="UserPage.jsp"%>
+
+ include directive contains only fixed value
+ -->
+
+
+<jsp:include page="<%=pageToDisplay%>"></jsp:include>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

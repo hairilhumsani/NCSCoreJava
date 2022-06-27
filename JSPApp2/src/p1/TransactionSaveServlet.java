@@ -18,6 +18,7 @@ public class TransactionSaveServlet extends HttpServlet {
 	// api
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// 2 task , 1st : extract data , 2nd : type cast data 
 		String date = request.getParameter("date");
 		int amount = Integer.parseInt(request.getParameter("amount"));
 		int secondAccount = Integer.parseInt(request.getParameter("secondAccount"));
@@ -27,13 +28,16 @@ public class TransactionSaveServlet extends HttpServlet {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate transactionDate = LocalDate.parse(date, formatter);
 		
+		// data binding
 		Transaction t = new Transaction(tid,transactionDate,amount,type,secondAccount);
 		System.out.println(t);
 		
+		// saving data in database
 		boolean isDataSaved = DatabaseClass.addTransaction(t);
 		
 		if(isDataSaved)
 		{
+			
 			response.sendRedirect("AddTransaction.jsp");
 		}
 		else

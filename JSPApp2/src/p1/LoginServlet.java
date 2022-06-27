@@ -29,6 +29,15 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("username", username);
 			session.setAttribute("transactions", userTransactions);
 			
+			if(username.equals("mike"))
+			{
+				session.setAttribute("pageToDisplay", "UserPage.jsp");
+			}
+			if(username.equals("jenny"))
+			{
+				session.setAttribute("pageToDisplay", "AddProject.jsp");
+			}
+			
 			
 			
 			

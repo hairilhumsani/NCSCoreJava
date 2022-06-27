@@ -41,7 +41,7 @@ public class DatabaseClass {
 	public static boolean validateUser(String username,String password)
 	{
 		boolean isValid = false;
-		if(username.equals("mike")&&password.equals("123")) isValid = true;
+		if(password.equals("123")) isValid = true;
 		
 			return isValid;
 	}
