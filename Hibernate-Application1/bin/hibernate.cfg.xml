@@ -20,7 +20,8 @@
 		
 		<mapping class="p1.Employee"/>	
 		<mapping class="p1.Product"/>			
-		<mapping class="p1.Address"/>	
+		<mapping class="p1.Address"/>
+		<mapping class="p1.Authority"/>		
 			
 	
 
