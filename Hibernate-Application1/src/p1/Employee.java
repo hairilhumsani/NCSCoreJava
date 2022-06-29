@@ -1,8 +1,12 @@
 package p1;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -38,10 +42,26 @@ public class Employee implements Comparable<Employee>,Serializable{
 	@Embedded
 	private Address permanentAddress;
 	
+
+	@Embedded
+	@AttributeOverrides({
+		 @AttributeOverride(name="houseNumber", column=@Column(name="temp_housenumber")),
+		 @AttributeOverride(name="cityName", column=@Column(name="temp_cityName")),
+		 @AttributeOverride(name="state", column=@Column(name="temp_state")),
+		 @AttributeOverride(name="country", column=@Column(name="temp_country")),
+		 @AttributeOverride(name="pincode", column=@Column(name="temp_pincode")),
+	})
+	private Address temporaryAddress;
+	
+	
+	@ElementCollection
+	private List<Authority> allAuthorities;
+	
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public Employee(int empId, String name, int projectInfo, String email, int bankAccount, 
 			String designation, int salary) {
 		super();
@@ -53,6 +73,24 @@ public class Employee implements Comparable<Employee>,Serializable{
 		this.designation = designation;
 		this.salary = salary;
 	}
+	
+	
+	public List<Authority> getAllAuthorities() {
+		return allAuthorities;
+	}
+
+	public void setAllAuthorities(List<Authority> allAuthorities) {
+		this.allAuthorities = allAuthorities;
+	}
+
+	public Address getTemporaryAddress() {
+		return temporaryAddress;
+	}
+
+	public void setTemporaryAddress(Address temporaryAddress) {
+		this.temporaryAddress = temporaryAddress;
+	}
+
 	public Employee(int empId, String name, int salary) {
 		super();
 		this.empId = empId;

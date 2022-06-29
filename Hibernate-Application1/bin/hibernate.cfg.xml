@@ -10,7 +10,7 @@
 		
 		<property name="hibernate.connection.username">root</property>
 		
-		<property name="hibernate.connection.password">Mohammadhairil27</property>
+		<property name="hibernate.connection.password">admin</property>
 		
 		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 		
@@ -19,9 +19,9 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		
 		<mapping class="p1.Employee"/>	
-		<mapping class="p1.Product"/>			
-		<mapping class="p1.Address"/>
-		<mapping class="p1.Authority"/>		
+		<mapping class="p1.Address"/>	
+		<mapping class="p1.Authority"/>	
+		
 			
 	
 
