@@ -1,11 +1,15 @@
-package p1;
+package pem;
 
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+
+
+import p1.Address;
+import p1.Employee;
+import p1.HibernateUtil;
+
 import org.hibernate.Session;
 
-public class MainClass {
+public class MainClassEmbedded {
 
 	public static void main(String[] args) {
 		
@@ -16,7 +20,10 @@ public class MainClass {
 	
 		System.out.println(" 3. Transaction started :- "+t1);
 		
-		Employee e = new Employee(502, "Jenny",779);
+		Address perAddress = new Address("ABC-123","New Delhi","Delhi","India",110058);
+		Employee e = new Employee(101,"Ramesh", 2000);
+		e.setPermanentAddress(perAddress);
+		
 		hibernate.save(e);
 		
 		System.out.println(" 4. Data Saved ");

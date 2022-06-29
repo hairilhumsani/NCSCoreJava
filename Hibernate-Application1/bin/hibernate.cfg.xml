@@ -18,7 +18,9 @@
 		
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		
-		<mapping class="p1.Employee"/>		
+		<mapping class="p1.Employee"/>	
+		<mapping class="p1.Address"/>	
+			
 	
 
 	</session-factory>
