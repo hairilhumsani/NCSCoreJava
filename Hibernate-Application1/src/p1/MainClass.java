@@ -1,8 +1,6 @@
 package p1;
 
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.Session;
 
 public class MainClass {
@@ -17,7 +15,13 @@ public class MainClass {
 		System.out.println(" 3. Transaction started :- "+t1);
 		
 		Employee e = new Employee(500, "ORMTest1",2000);
-		hibernate.save(e);
+		Product p1 = new Product(1,"iphone",5,4f,"Apple");
+		Product p2 = new Product(2,"iphone",5,4f,"Apple");
+		//hibernate.save(e);
+		hibernate.save(p1);
+		hibernate.save(p2);
+		
+		
 		
 		System.out.println(" 4. Data Saved ");
 		
