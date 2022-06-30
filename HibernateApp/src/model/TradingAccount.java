@@ -19,6 +19,7 @@ public class TradingAccount {
 	private int tradingId;
 	private String typeOfTrading;
 	private int fund;
+
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "AllStocks")

@@ -8,6 +8,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -56,16 +57,16 @@ public class Accounts {
 	@ElementCollection
 	private List<Transactions> allTransaction;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="documents")
-	private List<IdentityDocument> document;
+	private Set<IdentityDocument> document;
 	
 
-	public List<IdentityDocument> getDocument() {
+	public Set<IdentityDocument> getDocument() {
 		return document;
 	}
 
-	public void setDocument(List<IdentityDocument> document) {
+	public void setDocument(Set<IdentityDocument> document) {
 		this.document = document;
 	}
 
