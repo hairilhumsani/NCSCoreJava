@@ -22,7 +22,7 @@ public class TradingAccount {
 
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "AllStocks")
+	@JoinColumn(name = "tradingId")
 	Set<Stock> allStock;
 	
 	public TradingAccount(String typeOfTrading, int fund) {

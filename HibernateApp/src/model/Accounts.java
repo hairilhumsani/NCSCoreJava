@@ -7,7 +7,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.AttributeOverride;
@@ -19,18 +21,18 @@ import javax.persistence.Embedded;
 
 @Entity
 @Table(name = "HealthDatabase")
+public class Accounts implements Comparable, Serializable{
 
-public class Accounts {
-
-	@Column
+	private static final long serialVersionUID = 1L;
 	@Id
 	private int accountId;
-
-	@Column
 	private String name;
-
-	@Column
 	private int age;
+	
+	public Accounts()
+	{
+		
+	}
 
 	public Accounts(int accountId, String name, int age) {
 		super();
@@ -58,7 +60,7 @@ public class Accounts {
 	private List<Transactions> allTransaction;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="documents")
+	@JoinColumn(name="accountId")
 	private Set<IdentityDocument> document;
 	
 
@@ -146,4 +148,35 @@ public class Accounts {
 				+ "]";
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(accountId, age, allTransaction, carInsurance, document, healthInsurance, medicalInsurance,
+				name, tradingAccount);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Accounts other = (Accounts) obj;
+		return accountId == other.accountId && age == other.age && Objects.equals(allTransaction, other.allTransaction)
+				&& Objects.equals(carInsurance, other.carInsurance) && Objects.equals(document, other.document)
+				&& Objects.equals(healthInsurance, other.healthInsurance)
+				&& Objects.equals(medicalInsurance, other.medicalInsurance) && Objects.equals(name, other.name)
+				&& Objects.equals(tradingAccount, other.tradingAccount);
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+	
+	
 }

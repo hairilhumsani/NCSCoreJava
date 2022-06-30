@@ -21,7 +21,7 @@ public class HQLDemo {
 	
 	public static void whereClause(Session hibernate)
 	{
-		String query = "from Employee where salary > :xyz"; // select * from NCSEmployee
+		String query = "from Employee where age > :xyz"; // select * from NCSEmployee
 		Query q = hibernate.createQuery(query);
 		q.setInteger("xyz", 5000);
 		List<Employee> list =  q.list();

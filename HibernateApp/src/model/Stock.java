@@ -10,6 +10,7 @@ public class Stock {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	//bjj
 	private int stockId;
 	private int stockQuantity;
 	private int stockPrice;

@@ -61,6 +61,7 @@ public class MainClass {
 		accounts.setMedicalInsurance(medicalInsuracnce1);
 		accounts.setDocument(id1);
 		accounts.setTradingAccount(tradingAccount1);
+		tradingAccount1.setAllStock(stockSet1);
 		
 		
 		
@@ -68,7 +69,6 @@ public class MainClass {
 		hibernate.save(accounts);
 		hibernate.save(tradingAccount1);
 		
-		tradingAccount1.setAllStock(stockSet1);
 		
 		
 		
