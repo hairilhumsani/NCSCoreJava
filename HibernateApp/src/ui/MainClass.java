@@ -39,8 +39,9 @@ public class MainClass {
 
 		hibernate.save(accounts);
 		
-		hibernate.evict(transaction1);
-		transaction1 = new Transactions("Physical", 20, "2022-02-11", "Failed");
+		hibernate.evict(accounts);
+		medicalInsuracnce1 = new Insurance(1, "medical Plus");
+		accounts.setMedicalInsurance(medicalInsuracnce1);
 		hibernate.update(accounts);
 		
 
