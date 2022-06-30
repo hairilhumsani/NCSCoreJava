@@ -21,6 +21,7 @@
 		<mapping class="model.Accounts"/>
 		<mapping class="model.Insurance"/>
 		<mapping class="model.Transactions"/>
+		<mapping class="model.TradingAccount"/>
 
 	</session-factory>
 </hibernate-configuration>

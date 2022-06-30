@@ -10,7 +10,9 @@ import org.hibernate.Session;
 
 
 import model.Accounts;
+import model.IdentityDocument;
 import model.Insurance;
+import model.TradingAccount;
 import model.Transactions;
 
 public class MainClass {
@@ -36,13 +38,21 @@ public class MainClass {
 		accounts.setCarInsurance(carInsurance1);
 		accounts.setHealthInsurance(healthInsurance1);
 		accounts.setMedicalInsurance(medicalInsuracnce1);
+		
+		TradingAccount tradingAccount1 = new TradingAccount("Crypto",200);
+		IdentityDocument document1 = new IdentityDocument("DL",123,accounts.getAccountId());
 
 		hibernate.save(accounts);
+		hibernate.save(tradingAccount1);
 		
-		hibernate.evict(accounts);
+		accounts.setTradingAccount(tradingAccount1);
+		
+		
+	/*	Update	
+	 * hibernate.evict(accounts);
 		medicalInsuracnce1 = new Insurance(1, "medical Plus");
 		accounts.setMedicalInsurance(medicalInsuracnce1);
-		hibernate.update(accounts);
+		hibernate.update(accounts);*/
 		
 
 		System.out.println(" 4. Data Saved ");
