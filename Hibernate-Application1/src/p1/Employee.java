@@ -2,6 +2,7 @@ package p1;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -13,6 +14,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -62,7 +64,9 @@ public class Employee implements Comparable<Employee>,Serializable{
 	@JoinColumn(name = "AllignedProject")
 	private Project projectInfo;
 
-	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "EmployeeNumber")
+	private Set<IdentityDocument> document;
 	
 	//-----------------------------------------------------------------------
 	public Employee() {
@@ -90,6 +94,16 @@ public class Employee implements Comparable<Employee>,Serializable{
 		this.empId = empId;
 		this.name = name;
 		this.salary = salary;
+	}
+	
+	
+
+	public Set<IdentityDocument> getDocument() {
+		return document;
+	}
+
+	public void setDocument(Set<IdentityDocument> document) {
+		this.document = document;
 	}
 
 	public int getEmpId() {
