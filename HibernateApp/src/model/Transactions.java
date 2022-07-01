@@ -55,4 +55,12 @@ public class Transactions {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Transactions [transactionType=" + transactionType + ", amount=" + amount + ", date=" + date
+				+ ", status=" + status + "]";
+	}
+	
+	
+
 }

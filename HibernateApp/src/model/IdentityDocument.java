@@ -14,6 +14,11 @@ public class IdentityDocument {
 	private String documentName;
 	private int documentNumber;
 	private int AccountNumber;
+	
+	public IdentityDocument()
+	{
+		
+	}
 
 	public IdentityDocument(String documentName, int documentNumber, int accountNumber) {
 		super();
@@ -45,5 +50,13 @@ public class IdentityDocument {
 	public void setAccountNumber(int accountNumber) {
 		AccountNumber = accountNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "IdentityDocument [recordId=" + recordId + ", documentName=" + documentName + ", documentNumber="
+				+ documentNumber + ", AccountNumber=" + AccountNumber + "]";
+	}
+	
+	
 
 }

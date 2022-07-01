@@ -31,6 +31,12 @@ public class Insurance {
 		super();
 		
 	}
+	@Override
+	public String toString() {
+		return "Insurance [policyNumber=" + policyNumber + ", insuranceName=" + insuranceName + "]";
+	}
+	
+	
 	
 	
 	

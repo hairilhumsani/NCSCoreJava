@@ -25,6 +25,11 @@ public class TradingAccount {
 	@JoinColumn(name = "tradingId")
 	Set<Stock> allStock;
 	
+	public TradingAccount()
+	{
+		
+	}
+	
 	public TradingAccount(String typeOfTrading, int fund) {
 		super();
 		this.typeOfTrading = typeOfTrading;
@@ -53,6 +58,12 @@ public class TradingAccount {
 	}
 	public void setAllStock(Set<Stock> allStock) {
 		this.allStock = allStock;
+	}
+
+	@Override
+	public String toString() {
+		return "TradingAccount [tradingId=" + tradingId + ", typeOfTrading=" + typeOfTrading + ", fund=" + fund
+				+ ", allStock=" + allStock + "]";
 	}
 	
 	
