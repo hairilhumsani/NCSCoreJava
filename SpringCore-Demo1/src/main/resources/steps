@@ -1,0 +1,7 @@
+1) Create maven application 
+2) add shared POM.xml 
+    2.b) right click on project -> maven - > update project 
+    
+ 3) create bean class 
+ 4) add spring configuration file in resource folder (ncs-spring-conf.xml)
+ 5) write code to inject dependency through Spring
