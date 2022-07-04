@@ -30,6 +30,7 @@ public class Employee implements Comparable<Employee>,Serializable{
 	private int salary;
 	private Address address;
 
+	private List<Dependent> empDependents;
 	//-----------------------------------------------------------------------
 	public Employee() {
 		super();
