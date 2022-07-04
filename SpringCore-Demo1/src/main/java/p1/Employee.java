@@ -28,13 +28,34 @@ public class Employee implements Comparable<Employee>,Serializable{
 	private int bankAccount;
 	private String designation;
 	private int salary;
-	
+	private Address address;
 
 	//-----------------------------------------------------------------------
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	public Employee(String email, int bankAccount, String designation) {
+		super();
+		this.email = email;
+		this.bankAccount = bankAccount;
+		this.designation = designation;
+	}
+
+	
+	
+
+	public Address getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 
 	@Override
 	public int compareTo(Employee o) {

@@ -11,7 +11,7 @@ public class MainApplication {
 		
 		ApplicationContext spring = new ClassPathXmlApplicationContext("ncs-spring-cofg.xml");
 		
-		Employee e = (Employee)spring.getBean("employee");
+		Employee e = (Employee)spring.getBean("full-employee");
 		
 		printEmployeeDetails(e);
 		
@@ -22,5 +22,6 @@ public class MainApplication {
 	public static void printEmployeeDetails(Employee e)
 	{
 		System.out.println(e);
+		System.out.println(e.getAddress());
 	}
 }
