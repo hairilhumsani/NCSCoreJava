@@ -2,8 +2,6 @@ package hql;
 
 import org.hibernate.Session;
 
-import Employee;
-import HibernateUtil;
 
 public class ReadRecords {
 	
