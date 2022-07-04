@@ -3,6 +3,30 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="employee" class="p1.Employee"></bean>
+	<bean id="full-employee" class="p1.Employee">
+		<property name="empId" value="101"></property>
+		<property name="name" value="Mike"></property>
+		<property name="email" value="mike@ncs.com"></property>
+		<property name="bankAccount" value="1245"></property>
+		<property name="designation" value="Developer"></property>
+		<property name="salary" value="5000"></property>
+		<property name="address"  ref="permanent-address"></property>
+		
+		
+	</bean>
+	 <bean id="basic-employee" class="p1.Employee">
+	 	<constructor-arg name="email" value="ramesh@gmail.com"></constructor-arg>
+	 	<constructor-arg name="bankAccount" value="123"></constructor-arg>
+	 	<constructor-arg name="designation" value="HR - VP"></constructor-arg>
+	 </bean>
 	 
+	  <bean id="defult-employee" class="p1.Employee"></bean>
+	  
+	  <bean id="permanent-address" class="p1.Address">
+	  	<property name="houseNumber"  value="ABC-123"></property>
+	  	<property name="cityName"  value="New Delhi"></property>
+	  	<property name="state"  value="Delhi"></property>
+	  	<property name="country"  value="India"></property>
+	  	
+	  </bean>
 </beans>

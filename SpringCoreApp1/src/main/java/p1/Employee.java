@@ -1,23 +1,6 @@
 package p1;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 
 public class Employee implements Comparable<Employee>,Serializable{
 	
@@ -28,13 +11,34 @@ public class Employee implements Comparable<Employee>,Serializable{
 	private int bankAccount;
 	private String designation;
 	private int salary;
-	
+	private Address address;
 
 	//-----------------------------------------------------------------------
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	public Employee(String email, int bankAccount, String designation) {
+		super();
+		this.email = email;
+		this.bankAccount = bankAccount;
+		this.designation = designation;
+	}
+
+	
+	
+
+	public Address getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 
 	@Override
 	public int compareTo(Employee o) {
