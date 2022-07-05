@@ -24,11 +24,15 @@ public class MainApplication {
 		
 		
 		EmployeeDevService devService = (EmployeeDevService)spring.getBean("employeeDevService");
-		Test test = (Test)spring.getBean("test");
 		
 		
-		devService.doDeposit();
-		test.doTest();
+		try {
+			devService.doDeposit(e,"Netbanking");
+		} catch (Exception e2) {
+			System.out.println(e2.getMessage());
+		}
+		
+	
 		
 		
 	//	app.salaryTransfer(e,employeeService);

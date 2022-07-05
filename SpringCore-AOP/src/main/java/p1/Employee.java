@@ -18,7 +18,7 @@ public class Employee implements Comparable<Employee>,Serializable{
 	private int bankAccount;
 	@Value("developer")
 	private String designation;
-	@Value("2000")
+	@Value("200")
 	private int salary;
 
 	
