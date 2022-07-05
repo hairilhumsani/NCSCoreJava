@@ -1,12 +1,15 @@
 package p1;
 
+
 import org.springframework.stereotype.Component;
+
+
 
 @Component
 interface Payment {
+	
 	public int doPayment(int amount);
 }
-
 
 @Component
 class NetBanking implements Payment
