@@ -1,14 +1,11 @@
 package p1;
 
-import javax.persistence.Embeddable;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Address {
 
-	@Value("Test-123")
 	private String houseNumber;
 	private String cityName;
 	private String state;
@@ -18,6 +15,7 @@ public class Address {
 	
 	public Address(String houseNumber, String cityName, String state, String country, long pincode) {
 		super();
+		System.out.println("address constructor called - argument ");
 		this.houseNumber = houseNumber;
 		this.cityName = cityName;
 		this.state = state;
@@ -26,6 +24,7 @@ public class Address {
 	}
 	public Address() {
 		super();
+		System.out.println("address constructor called - default ");
 		// TODO Auto-generated constructor stub
 	}
 	public String getHouseNumber() {
