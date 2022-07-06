@@ -13,6 +13,8 @@ public interface EmployeeService {
 	public List<Employee> getAllEmployees();
 	public List<Employee> getAllEmployees(int salaryRange1,int salaryRange2);
 	
+	public List<Employee> getProjectByEmployeeId(int empId, int projectId);
+	
 	
 	
 }

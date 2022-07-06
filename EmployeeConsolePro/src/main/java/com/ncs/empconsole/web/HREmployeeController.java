@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +43,23 @@ public class HREmployeeController {
 		System.out.println("path varible : "+name);
 		Employee e =  empService.getEmployeeDetails(name);
 		System.out.println(e);
+		return e;
+	}
+	
+	@PutMapping("/employee/{id}/project/projectid/{projectId}")
+	public Employee putProjectByIdToEmployee(@PathVariable int id, @PathVariable int projectId)
+	{
+		System.out.println(id + projectId);
+		Employee e = empService.getEmployeeDetails(id);
+		e.setProjectInfo(projectId);
+		return e;
+	}
+	
+	@GetMapping("/employee/{id}/project/projectid/{projectId}")
+	public Employee getProjectByIdToEmployee(@PathVariable int id, @PathVariable int projectId)
+	{
+		System.out.println(id + projectId);
+		Employee e = empService.getEmployeeDetails(id);
 		return e;
 	}
 	
