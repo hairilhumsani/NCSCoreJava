@@ -61,6 +61,25 @@ public class EmployeeDB {
 		else return null;
 		
 	}
+	
+	
+	public static Employee updateProjectInfo(int searchId,int projectId)
+	{
+		
+		
+		Employee empFromDB = getEmployee(searchId);
+		
+		if(empFromDB != null)
+		{
+			empFromDB.setProjectInfo(projectId);
+			return empFromDB;
+		}
+		
+		
+		
+		return null;
+	}
+	
 	public static List<Employee> getEmployeeDB() {
 		return employeeDB;
 	}
@@ -72,3 +91,17 @@ public class EmployeeDB {
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

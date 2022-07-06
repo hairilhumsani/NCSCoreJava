@@ -13,6 +13,7 @@ public interface EmployeeService {
 	public List<Employee> getAllEmployees();
 	public List<Employee> getAllEmployees(int salaryRange1,int salaryRange2);
 	
+	public Employee updateProject(int searchEmpId,int projectId);
 	
 	
 }

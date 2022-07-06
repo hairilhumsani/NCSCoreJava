@@ -44,5 +44,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return null;
 	}
 
+	@Override
+	public Employee updateProject(int searchEmpId, int projectId) {
+		
+		return EmployeeDB.updateProjectInfo(searchEmpId, projectId);
+	}
+
 	
 }
