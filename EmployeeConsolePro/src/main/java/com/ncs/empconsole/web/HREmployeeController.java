@@ -46,22 +46,31 @@ public class HREmployeeController {
 		return e;
 	}
 	
-	@PutMapping("/employee/{id}/project/projectid/{projectId}")
-	public Employee putProjectByIdToEmployee(@PathVariable int id, @PathVariable int projectId)
+	@PutMapping("/employee/{searchEmpId}/project")
+	public Employee updateEmployee(@PathVariable int searchEmpId,@RequestParam int projectId)
 	{
-		System.out.println(id + projectId);
-		Employee e = empService.getEmployeeDetails(id);
-		e.setProjectInfo(projectId);
-		return e;
-	}
-	
-	@GetMapping("/employee/{id}/project/projectid/{projectId}")
-	public Employee getProjectByIdToEmployee(@PathVariable int id, @PathVariable int projectId)
-	{
-		System.out.println(id + projectId);
-		Employee e = empService.getEmployeeDetails(id);
-		return e;
+		return empService.updateProject(searchEmpId, projectId);
 	}
 	
 	
 }//end class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
