@@ -5,37 +5,43 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ncs.empconsole.dao.EmployeeDB;
+
 import com.ncs.empconsole.model.Employee;
+import com.ncs.empconsole.repository.EmployeeRepository;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
 
 	@Autowired
-	EmployeeDB employeeDb;
+	EmployeeRepository employeeRepository;
 	
 	@Override
 	public boolean addEmployee(Employee e) {
-		return employeeDb.addEmployee(e);
+		Employee savedEntity =  employeeRepository.save(e);
+		
+		if(savedEntity!=null) return true;
+		else return false;
 		
 	}
 
 	@Override
 	public Employee getEmployeeDetails(int searchedEmpId) {
 		
-		return employeeDb.getEmployee(searchedEmpId);
+		Employee returnedEmployee =  employeeRepository.getById(searchedEmpId);
+		
+		 return (returnedEmployee!=null)? returnedEmployee : null;
 	}
 
 	@Override
 	public Employee getEmployeeDetails(String searchedEmpName) {
 		
-		return employeeDb.getEmployee(searchedEmpName);
+		return employeeRepository.getEmployeeDetails(searchedEmpName);
 	}
 
 	@Override
 	public List<Employee> getAllEmployees() {
 		// TODO Auto-generated method stub
-		return employeeDb.getEmployeeDB();
+		return employeeRepository.findAll();
 	}
 
 	@Override
@@ -47,15 +53,15 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public Employee updateProject(int searchEmpId, int projectId) {
 		
-		return EmployeeDB.updateProjectInfo(searchEmpId, projectId);
+		return null;
 	}
 
 	@Override
-	public Employee getEmployeeByProject(int projectId) {
-		
-		return EmployeeDB.getEmployeeFromProIDDB(projectId);
-		// TODO Auto-generated method stub
+	public void deleteProject(int empid) {
+		employeeRepository.deleteById(empid);
 	}
+	
+	
 
 	
 }
