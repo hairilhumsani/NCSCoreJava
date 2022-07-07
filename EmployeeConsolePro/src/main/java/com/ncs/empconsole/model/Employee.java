@@ -9,8 +9,14 @@ import javax.persistence.Id;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+<<<<<<< Updated upstream
 @JsonIgnoreProperties("hibernateLazyInitializer")
+=======
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+>>>>>>> Stashed changes
 @Entity
+@JsonIgnoreProperties("hibernateLazyInitializer")
 public class Employee implements Comparable<Employee>,Serializable{
 	
 	@Id

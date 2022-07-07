@@ -56,5 +56,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return null;
 	}
 
+	@Override
+	public void deleteProject(int empid) {
+		employeeRepository.deleteById(empid);
+	}
+	
+	
+
 	
 }
