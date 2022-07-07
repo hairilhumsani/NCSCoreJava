@@ -1,0 +1,7 @@
+com/ncs/empconsole/model/Project.class
+com/ncs/empconsole/service/EmployeeService.class
+com/ncs/empconsole/EmployeeConsoleProApplication.class
+com/ncs/empconsole/web/HREmployeeController.class
+com/ncs/empconsole/model/Employee.class
+com/ncs/empconsole/repository/EmployeeRepository.class
+com/ncs/empconsole/web/EmployeeRestController.class
