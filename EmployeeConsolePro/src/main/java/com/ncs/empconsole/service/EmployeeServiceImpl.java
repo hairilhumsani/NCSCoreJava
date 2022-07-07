@@ -35,7 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public Employee getEmployeeDetails(String searchedEmpName) {
 		
-		return null;
+		return employeeRepository.getEmployeeDetails(searchedEmpName);
 	}
 
 	@Override
