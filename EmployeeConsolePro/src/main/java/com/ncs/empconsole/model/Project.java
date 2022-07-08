@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@JsonIgnoreProperties("hibernateLazyInitializer")
 public class Project implements Serializable,Comparable<Project> {
 	
 	@Id
@@ -31,7 +30,6 @@ public class Project implements Serializable,Comparable<Project> {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="projectInfo")
-	@JsonBackReference
 	private Set<Employee> allEmployees;
 	
 	public Project() {
@@ -59,11 +57,15 @@ public class Project implements Serializable,Comparable<Project> {
 
 	
 	
+
+
 	public Set<Employee> getAllEmployees() {
+		System.err.println(" ** Get All Employees Called ** "+this.allEmployees);
 		return allEmployees;
 	}
 
 	public void setAllEmployees(Set<Employee> allEmployees) {
+		System.err.println(" ** Set All Employees Called ** "+allEmployees);
 		this.allEmployees = allEmployees;
 	}
 

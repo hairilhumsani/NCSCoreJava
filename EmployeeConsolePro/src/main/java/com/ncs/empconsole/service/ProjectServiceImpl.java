@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ public class ProjectServiceImpl implements ProjectService{
 	ProjectRepository projectRepository;
 	
 	@Override
+	@Transactional
 	public Project addProject(Project project) {
 		
 		return projectRepository.save(project);
@@ -30,6 +33,7 @@ public class ProjectServiceImpl implements ProjectService{
 	}
 
 	@Override
+	@Transactional
 	public Set<Employee> allocateProject(Project p, Employee e) {
 		
 			System.err.println(" -------- Project Inside Service Impl ------------");
@@ -39,10 +43,13 @@ public class ProjectServiceImpl implements ProjectService{
 			
 			if(allWorkingEmployees !=null)
 			{
+				System.err.println("--->> inside if ");
 				allWorkingEmployees.add(e);
+				System.err.println("--->> Employee added in Set  "+allWorkingEmployees.size());
 				p.setAllEmployees(allWorkingEmployees);
-				projectRepository.save(p);
-				System.err.println("--->> inside if "+allWorkingEmployees);
+				System.err.println("--->> set All Employees called "+p.getAllEmployees());
+				projectRepository.saveAndFlush(p);
+				System.err.println("--->> Data Saved");
 				return allWorkingEmployees;
 			}
 			else

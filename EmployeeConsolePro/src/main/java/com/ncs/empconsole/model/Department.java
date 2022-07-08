@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties("hibernateLazyInitializer")
+
 @Entity
 public class Department {
 

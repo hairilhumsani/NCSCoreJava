@@ -17,17 +17,6 @@ public class AllExceptionHandler
 	}
 
 	@ExceptionHandler
-	public ResponseEntity<ExceptionTemplate> handleIllegalArgumentExceptionTemplateData(IllegalArgumentException e)
-	{
-		ExceptionTemplate template = new ExceptionTemplate();
-		template.setMsg(e.getMessage());
-		template.setUserInput("");
-		template.setDateTime(LocalDateTime.now());
-		
-		return new ResponseEntity<ExceptionTemplate>(template,HttpStatus.BAD_REQUEST);
-	}
-	
-	@ExceptionHandler
 	public ResponseEntity<ExceptionTemplate> handleNoSuchElementExceptionTemplateData(java.util.NoSuchElementException e)
 	{
 		System.out.println("--->> Inside Exeption Handler : NoSuchElement ");
@@ -62,6 +51,8 @@ public class AllExceptionHandler
 		
 		return new ResponseEntity<ExceptionTemplate>(template,HttpStatus.BAD_REQUEST);
 	}
+	
+	
 	
 	
 
