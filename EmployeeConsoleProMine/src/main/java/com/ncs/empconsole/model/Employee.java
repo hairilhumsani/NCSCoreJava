@@ -24,10 +24,25 @@ public class Employee implements Comparable<Employee>,Serializable{
 	private String designation;
 	private int salary;
 	
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="department")
+	private Department department;
+	
+	
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Employee(int empId, String name, int salary)
+	{
+		this.empId = empId;
+		this.name = name;
+		this.salary = salary;
+	}
+	
+	
 	public Employee(String name, Project projectInfo, String email, int bankAccount, String address,
 			String designation, int salary) {
 		
@@ -56,6 +71,14 @@ public class Employee implements Comparable<Employee>,Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 	public Project getProjectInfo() {
 		return projectInfo;

@@ -2,6 +2,7 @@ package com.ncs.empconsole.web;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,9 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ncs.empconsole.dto.HREmployeeResponseDTO;
 import com.ncs.empconsole.exception.OutofRangeSalaryException;
+import com.ncs.empconsole.model.Department;
 import com.ncs.empconsole.model.Employee;
+import com.ncs.empconsole.model.Project;
+import com.ncs.empconsole.service.DepartmentService;
 import com.ncs.empconsole.service.EmployeeService;
+import com.ncs.empconsole.service.ProjectService;
+import com.ncs.empconsole.util.HREmployeeDTOConverstion;
 
 @RestController
 @RequestMapping("/empconsole/hr")
@@ -25,6 +32,13 @@ public class HREmployeeController {
 	
 	@Autowired
 	EmployeeService empService;
+	
+	@Autowired
+	DepartmentService departmentService;
+	
+	@Autowired
+	ProjectService projectService;
+	
 	
 	public HREmployeeController() {
 		System.out.println("HR Employee Controller constructor called");
@@ -37,12 +51,15 @@ public class HREmployeeController {
 	}
 
 	@GetMapping("/employee/id/{id}")
-	public ResponseEntity<Employee> getEmployeeById(@PathVariable int id)throws IllegalArgumentException,NoSuchElementException
+	public ResponseEntity<HREmployeeResponseDTO> getEmployeeById(@PathVariable int id)throws IllegalArgumentException,NoSuchElementException
 	{
 		System.out.println("path varible : "+id);
 		try {
 			Employee output = empService.getEmployeeDetails(id);
-			return new ResponseEntity<Employee>(output,HttpStatus.OK);
+			
+			HREmployeeResponseDTO dto = HREmployeeDTOConverstion.convertToHRReponse(output);
+			
+			return new ResponseEntity<HREmployeeResponseDTO>(dto,HttpStatus.OK);
 		} catch (Exception e) {
 			System.out.println(" --->> inside catch ");
 			throw new NoSuchElementException(e.getMessage());
@@ -83,6 +100,37 @@ public class HREmployeeController {
 		System.out.println(list);
 		return new ResponseEntity<List<Employee>>(list,HttpStatus.OK);
 	} 
+	
+	@PostMapping("/department")
+	public Department addDepartment(@RequestBody Department department)
+	{
+		return departmentService.addDepartment(department);
+	}
+	
+	@GetMapping("/department/{dCode}")
+	public Department getDepartmentById(@PathVariable int dCode)
+	{
+		return departmentService.getDepartmentByCode(dCode);
+	}
+	
+	@PutMapping("/employee/{searchEmpId}/department")
+	public Employee updateEmployeeDepartment(@PathVariable int searchEmpId,@RequestParam int dcode)
+	{
+		System.out.println(" HR @ REST Controller ");
+		System.out.println(" Searched Emp Id :- "+searchEmpId);
+		System.out.println("D code "+dcode);
+		Department d = departmentService.getDepartmentByCode(dcode);
+		
+		if(d != null)
+		{
+			System.out.println("--->> inside d "+d);
+			Employee e = empService.updateDepartment(searchEmpId, d);
+			return e;
+		}
+		
+		return null;
+	}
+	
 	
 }//end class
 
