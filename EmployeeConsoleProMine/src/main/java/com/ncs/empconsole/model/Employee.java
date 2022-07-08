@@ -26,7 +26,7 @@ public class Employee implements Comparable<Employee>,Serializable{
 	
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="department")
+	@JoinColumn(name="department_code")
 	private Department department;
 	
 	
