@@ -2,6 +2,7 @@ package com.ncs.empconsole.web;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,10 @@ import com.ncs.empconsole.dto.HREmployeeResponseDTO;
 import com.ncs.empconsole.exception.OutofRangeSalaryException;
 import com.ncs.empconsole.model.Department;
 import com.ncs.empconsole.model.Employee;
+import com.ncs.empconsole.model.Project;
 import com.ncs.empconsole.service.DepartmentService;
 import com.ncs.empconsole.service.EmployeeService;
+import com.ncs.empconsole.service.ProjectService;
 import com.ncs.empconsole.util.HREmployeeDTOConverstion;
 
 @RestController
@@ -32,6 +35,10 @@ public class HREmployeeController {
 	
 	@Autowired
 	DepartmentService departmentService;
+	
+	@Autowired
+	ProjectService projectService;
+	
 	
 	public HREmployeeController() {
 		System.out.println("HR Employee Controller constructor called");
@@ -124,6 +131,42 @@ public class HREmployeeController {
 		return null;
 	}
 	
+	@PostMapping("/project")
+	public Project addProject(@RequestBody Project project)
+	{
+		return projectService.addProject(project);
+	}
+	
+	@GetMapping("/project/{pid}")
+	public Project getProjetById(@PathVariable int pid)
+	{
+		return projectService.getProject(pid);
+	}
+	
+	@PutMapping("/project/{pid}")
+	public Set<Employee> allocateEmployeeToProject(@PathVariable int pid, @RequestParam int empId)
+	{
+		 Set<Employee> workingEmployee = null;
+		 
+		  
+		 Employee e = empService.getEmployeeDetails(empId);
+		 Project p = projectService.getProject(pid);
+		 
+		 // write exception handling code if e or p is null
+		 
+		 if(e != null & p != null)
+		 {
+			 workingEmployee = projectService.allocateProject(p, e);
+		 }
+		 
+		 return workingEmployee;
+	}
+	
+	@GetMapping("/project/{pid}/employees")
+	public Set<Employee> getAllWorkingEmployees(@PathVariable int pid)
+	{
+		return projectService.getProjectResource(pid);
+	}
 	
 }//end class
 

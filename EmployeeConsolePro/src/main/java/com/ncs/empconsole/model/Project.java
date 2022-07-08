@@ -1,9 +1,26 @@
 package com.ncs.empconsole.model;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@JsonIgnoreProperties("hibernateLazyInitializer")
 public class Project implements Serializable,Comparable<Project> {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int projectNumber;
 	private String projectName;
 	private int cost;
@@ -11,6 +28,11 @@ public class Project implements Serializable,Comparable<Project> {
 	private String enddate;
 	private String comments;
 	private String projectHeadEmail;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="projectInfo")
+	@JsonBackReference
+	private Set<Employee> allEmployees;
 	
 	public Project() {
 		super();
@@ -33,6 +55,16 @@ public class Project implements Serializable,Comparable<Project> {
 		super();
 		this.projectNumber = projectNumber;
 		this.projectName = projectName;
+	}
+
+	
+	
+	public Set<Employee> getAllEmployees() {
+		return allEmployees;
+	}
+
+	public void setAllEmployees(Set<Employee> allEmployees) {
+		this.allEmployees = allEmployees;
 	}
 
 	public int getProjectNumber() {
