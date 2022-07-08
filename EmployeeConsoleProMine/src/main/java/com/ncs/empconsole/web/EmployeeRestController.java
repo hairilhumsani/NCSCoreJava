@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ncs.empconsole.exception.OutofRangeSalaryException;
 import com.ncs.empconsole.model.Employee;
 import com.ncs.empconsole.service.EmployeeService;
 
@@ -26,11 +27,11 @@ public class EmployeeRestController {
 	}
 	
 	@PostMapping("/employee")
-	public Employee addEmployee(@RequestBody Employee e)
+	public Employee addEmployee(@RequestBody Employee e) throws OutofRangeSalaryException
 	{
 		
 		System.err.println(" -->> 1) From Web :- "+e);
-		boolean status = empService.addEmployee(e);
+		boolean status = empService.addEmployee(e) != null;
 		System.err.println(" -->> 4) add employee Rest controller status :- "+status);
 		return (status == true)?e:null;
 	}
@@ -52,7 +53,7 @@ public class EmployeeRestController {
 	public void deleteEmployeeById(@PathVariable int emp_id)
 	{
 		System.out.println("path varible : "+emp_id);
-		empService.deleteProject(emp_id);
+		empService.deleteEmployee(emp_id);
 	}
 
 }

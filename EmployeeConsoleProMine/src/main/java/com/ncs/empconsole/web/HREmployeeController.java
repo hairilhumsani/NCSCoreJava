@@ -1,8 +1,11 @@
 package com.ncs.empconsole.web;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ncs.empconsole.exception.OutofRangeSalaryException;
 import com.ncs.empconsole.model.Employee;
 import com.ncs.empconsole.service.EmployeeService;
 
@@ -33,10 +37,16 @@ public class HREmployeeController {
 	}
 
 	@GetMapping("/employee/id/{id}")
-	public Employee getEmployeeById(@PathVariable int id)
+	public ResponseEntity<Employee> getEmployeeById(@PathVariable int id)throws IllegalArgumentException,NoSuchElementException
 	{
 		System.out.println("path varible : "+id);
-		return empService.getEmployeeDetails(id);
+		try {
+			Employee output = empService.getEmployeeDetails(id);
+			return new ResponseEntity<Employee>(output,HttpStatus.OK);
+		} catch (Exception e) {
+			System.out.println(" --->> inside catch ");
+			throw new NoSuchElementException(e.getMessage());
+		}
 	}
 	
 	@GetMapping("/employee") // ..../employee/hr/employee?name=ramesh
@@ -55,14 +65,24 @@ public class HREmployeeController {
 	}
 	
 	@PostMapping("/employee")
-	public Employee addEmployee(@RequestBody Employee e)
+	public ResponseEntity<Employee> addEmployee(@RequestBody Employee e)throws OutofRangeSalaryException
 	{
 		
-		System.err.println(" -->> 1) From Web :- "+e);
-		boolean status = empService.addEmployee(e);
-		System.err.println(" -->> 4) add employee Rest controller status :- "+status);
-		return (status == true)?e:null;
+		Employee savedEmployee = empService.addEmployee(e);
+		
+		return new ResponseEntity<Employee>(savedEmployee,HttpStatus.OK);
+		
 	}
+	
+	
+	@GetMapping("/employees/salary") 
+	public ResponseEntity<List<Employee>> getEmployeeBySalaryRange(@RequestParam int r1,@RequestParam int r2)
+	{
+		
+		List<Employee> list =  empService.getAllEmployees(r1, r2);
+		System.out.println(list);
+		return new ResponseEntity<List<Employee>>(list,HttpStatus.OK);
+	} 
 	
 }//end class
 

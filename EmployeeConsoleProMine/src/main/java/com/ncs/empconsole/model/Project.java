@@ -2,7 +2,20 @@ package com.ncs.empconsole.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+@JsonIgnoreProperties("hibernateLazyInitiazer")
+@Entity
 public class Project implements Serializable,Comparable<Project> {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int projectNumber;
 	private String projectName;
 	private int cost;

@@ -2,22 +2,22 @@ package com.ncs.empconsole.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import org.springframework.stereotype.Component;
+import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
 @JsonIgnoreProperties("hibernateLazyInitializer")
+@Entity
 public class Employee implements Comparable<Employee>,Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int empId;
 	private String name;
-	private int projectInfo;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "projectInfo")
+	private Project projectInfo;
+	
 	private String email;
 	private int bankAccount;
 	private String address;
@@ -28,7 +28,7 @@ public class Employee implements Comparable<Employee>,Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Employee(String name, int projectInfo, String email, int bankAccount, String address,
+	public Employee(String name, Project projectInfo, String email, int bankAccount, String address,
 			String designation, int salary) {
 		
 		
@@ -57,10 +57,10 @@ public class Employee implements Comparable<Employee>,Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getProjectInfo() {
+	public Project getProjectInfo() {
 		return projectInfo;
 	}
-	public void setProjectInfo(int projectInfo) {
+	public void setProjectInfo(Project projectInfo) {
 		this.projectInfo = projectInfo;
 	}
 	public String getEmail() {
@@ -109,7 +109,7 @@ public class Employee implements Comparable<Employee>,Serializable{
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + empId;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + projectInfo;
+		result = prime * result +((projectInfo == null) ? 0 : projectInfo.hashCode());
 		result = prime * result + salary;
 		return result;
 	}

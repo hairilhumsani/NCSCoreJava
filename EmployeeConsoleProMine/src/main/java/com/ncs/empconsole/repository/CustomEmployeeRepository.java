@@ -9,6 +9,6 @@ public interface CustomEmployeeRepository {
 	public Employee getEmployeeDetails(String searchedEmpName);
 	public List<Employee> getAllEmployees(int salaryRange1,int salaryRange2);
 	
-	public Employee updateProject(int searchEmpId,int projectId);
+	public boolean updateProject(int searchEmpId,int projectId);
 	
 }
