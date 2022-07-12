@@ -3,6 +3,8 @@ package com.ncs.empconsole.model;
 import java.io.Serializable;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties("hibernateLazyInitializer")
@@ -12,6 +14,8 @@ public class Employee implements Comparable<Employee>,Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int empId;
+	
+	@NotNull(message = "employee name cannot be null")
 	private String name;
 	
 	@OneToOne(cascade = CascadeType.ALL)

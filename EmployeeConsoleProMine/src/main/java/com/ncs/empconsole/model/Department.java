@@ -12,9 +12,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Department {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int dCode; // d stands for department
 	private String name;
+	
+	
+	public Department(int dCode,String departmentName)
+	{
+		this.dCode = dCode;
+		this.name = departmentName;
+		
+	}
 	public int getdCode() {
 		return dCode;
 	}
@@ -27,6 +34,13 @@ public class Department {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Override
+	public String toString() {
+		return "Department [dCode=" + dCode + ", name=" + name + "]";
+	}
+	
+	
+	
 	
 	
 }
