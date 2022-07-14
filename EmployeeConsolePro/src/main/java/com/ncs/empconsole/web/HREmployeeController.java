@@ -2,6 +2,7 @@ package com.ncs.empconsole.web;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -163,6 +164,7 @@ public class HREmployeeController {
 		 
 		  
 		 Employee e = empService.getEmployeeDetails(empId);
+		 
 		 Project p = projectService.getProject(pid);
 		 
 		 // write exception handling code if e or p is null

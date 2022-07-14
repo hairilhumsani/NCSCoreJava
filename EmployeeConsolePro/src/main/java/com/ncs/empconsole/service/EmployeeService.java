@@ -2,6 +2,7 @@ package com.ncs.empconsole.service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,7 @@ public interface EmployeeService {
 	
 	public Employee updateProject(int searchEmpId,int projectId);
 	public Employee updateDepartment(int searchEmpId,Department department);
+	
+	public boolean deleteEmployeeById(int id);
 	
 }
