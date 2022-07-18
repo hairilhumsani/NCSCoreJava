@@ -1,0 +1,18 @@
+server:
+  port: 8089
+
+
+eureka: 
+ instance:
+  hostname: localhost
+    
+spring:
+  application:
+    name: api-gateway
+  cloud: 
+   gateway: 
+    routes: 
+     - id: NCS-MOVIE-SERVICE
+       uri: lb://NCS-MOVIE-SERVICE 
+       predicates: 
+        - Path=/api/movie/**
