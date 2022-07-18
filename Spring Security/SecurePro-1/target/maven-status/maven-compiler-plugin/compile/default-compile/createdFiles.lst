@@ -1,0 +1,4 @@
+com\mkj\securepro\web\HomeRestController.class
+com\mkj\securepro\security\SecurityConfig.class
+com\mkj\securepro\web\AdminController.class
+com\mkj\securepro\SecurePro1Application.class

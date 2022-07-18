@@ -1,0 +1,48 @@
+
+endpoint for admin
+                        (role)
+     localhost:8082/api/admin/.....
+	 
+1) POST :- to create questions  	localhost:8082/abc-university/admin 
+2) PUT  :-  to update Questions		localhost:8082/abc-university/admin/{qId}
+3) Delete :- to remove the Question	localhost:8082/abc-university/admin/{qId}
+4) GET :- to access the result
+5) Get :- Admin want to see result of Java Test (use service no 3 of 8085 port)
+
+--------------------------------------------------------------------------------------
+endPoint for QuestionFetch - Service 
+      
+1) Get :- to fetch Questions		
+         localhost:8083/abc-university/question?category=java&level=basic
+
+---------------------------------------------------------------------------------------
+
+endpoints for Student 
+
+                   (role)
+     localhost:8084/api/student/.....
+              
+1) GET :- for exam need to get Question (can get questions from Service hosted on 
+                                               8083 port)
+											   
+2) POST :- localhost:8084/api/student/result
+3) GET :- Access Result
+4) Get :- Student want to see his/her result -> (call 8085: service no 5)
+5) Get :- Student want to see current test result  -> (call 8085 : service no 4)
+----------------------------------------------------------------------------------------			  
+4th Service to Access Result deployed on 8085
+   
+1) GET :- localhost:8085/abc-university/result?date=15-july-2022&category=java
+2) GET :- localhost:8085/abc-university/result?date=15-july-2022&category=java&level=advance
+3) GET :- localhost:8085/abc-university/result?date=10-july-2022&date2=15-july-2022&category=Java
+4) GET :- localhost:8085/abc-university/result?date=10-july-2022&studentId=1
+5) GET :- localhost:8085/abc-university/result?studentId=1
+
+
+   
+
+
+
+
+
+		
