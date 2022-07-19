@@ -41,8 +41,11 @@ public class AppUserServiceImpl implements AppUserService{
 
 	@Override
 	public MySecuredUsers saveUsers(MySecuredUsers appUsers) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		MySecuredUsers user = userRepo.save(appUsers);
+		
+		return user;
+	
 	}
 }
 

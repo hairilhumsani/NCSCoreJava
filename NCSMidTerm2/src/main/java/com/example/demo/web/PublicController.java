@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dto.AppUserRequestDTO;
 import com.example.demo.dto.JWTResponseDTO;
 import com.example.demo.jwtutil.JWTUtil;
+import com.example.demo.model.MySecuredUsers;
 import com.example.demo.service.AppUserServiceImpl;
 
 @RestController
@@ -23,35 +24,52 @@ public class PublicController {
 
 	@Autowired
 	private AppUserServiceImpl appUserServiceImpl;
-	
+
 	@Autowired
 	private JWTUtil jwtUtil;
-	
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
+
 	@PostMapping("/login")
-	public ResponseEntity<JWTResponseDTO> doLogin(@RequestBody AppUserRequestDTO userEntry)throws Exception
-	{
-		System.out.println("----->> inside public/login "+userEntry);
-		
+	public ResponseEntity<JWTResponseDTO> doLogin(@RequestBody AppUserRequestDTO userEntry) throws Exception {
+		System.out.println("----->> inside public/login " + userEntry);
+
 		try {
-			
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userEntry.getUsername(), userEntry.getPassword()));
-			System.out.println();
-			
+
+			authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(userEntry.getUsername(), userEntry.getPassword()));
+
 		} catch (Exception e) {
 			throw new Exception("Bad credentials ");
 		}
 
-		UserDetails userDetails =  appUserServiceImpl.loadUserByUsername(userEntry.getUsername());
-		
+		UserDetails userDetails = appUserServiceImpl.loadUserByUsername(userEntry.getUsername());
+
 		String token = jwtUtil.generateToken(userDetails);
-		
-		boolean isValid = token!=null?true:false;
-		
+
+		boolean isValid = token != null ? true : false;
+
 		JWTResponseDTO jwtResponseDTO = new JWTResponseDTO(token, userEntry.getUsername(), isValid);
-		
+
 		return new ResponseEntity<JWTResponseDTO>(jwtResponseDTO, HttpStatus.OK);
 	}
+	
+	//register user
+    @PostMapping("/register")
+    public MySecuredUsers addUsers(@RequestBody MySecuredUsers appUsers) throws Exception
+    {
+    	MySecuredUsers users = null;
+    	try 
+    	{
+            users = appUserServiceImpl.saveUsers(appUsers);
+        }
+    	catch (Exception e)
+    	{
+    		throw new Exception(e.toString());
+    	}
+		return users;
+    	
+    }
+    
 }
