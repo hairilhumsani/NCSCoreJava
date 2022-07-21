@@ -1,0 +1,8 @@
+create database spro;
+use spro;
+SELECT * FROM spro.app_users;
+
+insert into spro.app_users value(1202,'min','employee','min123');
+insert into spro.app_users value(1203,'yong','employee','yong');
+insert into spro.app_users value(1204,'kang','employee','kang');
+insert into spro.app_users value(1205,'kang','employee','kang');
