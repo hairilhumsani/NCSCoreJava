@@ -15,7 +15,7 @@ import com.abcuni.QuizPracticesQuestionService.model.Question;
 import com.abcuni.QuizPracticesQuestionService.service.QuestionService;
 
 @RestController
-@RequestMapping("/questions")
+@RequestMapping("/api/questions")
 @Validated
 public class QuestionRestController {
 

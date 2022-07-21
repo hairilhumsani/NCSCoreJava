@@ -12,7 +12,7 @@ import com.abcuni.QuizPracticesUsersService.model.Users;
 import com.abcuni.QuizPracticesUsersService.service.UsersService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 @Validated
 public class UsersRestController {
 	
