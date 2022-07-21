@@ -6,7 +6,8 @@ import com.abcuni.QuizPracticesQuestionService.model.Question;
 
 public interface CustomQuestionRepository {
 	
-	public List <Question> getAllQuestion(); 
 	public List<Question> getQuestionByCategory(String category);
+	public List<Question> getQuestionByMarks(int marks);
+	public void updateQuestion(int id);
 	
 }
