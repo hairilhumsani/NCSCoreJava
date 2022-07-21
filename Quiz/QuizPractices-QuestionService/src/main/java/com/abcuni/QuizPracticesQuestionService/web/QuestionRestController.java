@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +27,18 @@ public class QuestionRestController {
 	public QuestionRestController() {
 		System.out.println("Question Controller constructor called");
 	}
-
+	
+	
+	//CREATE
+	@PostMapping("/addQuestion")
+	public ResponseEntity<Question> addQuestion(@RequestBody Question q) throws Exception
+	{
+		Question queryAddQuestion = questionService.addQuestion(q);
+		return new ResponseEntity<Question>(queryAddQuestion,HttpStatus.OK);
+	}
+	
+	
+	//RETRIEVE
 	@GetMapping("/getAll")
 	public List<Question> getAllQuestions() {
 		return questionService.getAllQuestion();
@@ -52,4 +65,10 @@ public class QuestionRestController {
 			throw new Exception("Invalid Category");
 		}
 	}
-}
+	
+	
+	//UPDATE
+	//DELETE
+
+	
+}//END OF CLASS

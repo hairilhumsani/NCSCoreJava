@@ -34,4 +34,10 @@ public class QuestionServiceImpl implements QuestionService{
 		return questionRepository.getQuestionByMarks(marks);
 	}
 
+	@Override
+	public Question addQuestion(Question q) {
+		Question addQuestion = questionRepository.save(q);
+		return addQuestion;
+	}
+
 }

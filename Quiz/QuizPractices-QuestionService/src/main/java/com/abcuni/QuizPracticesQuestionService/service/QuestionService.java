@@ -11,6 +11,7 @@ public interface QuestionService {
 	
 	
 	//JPA Query
+	public Question addQuestion(Question q);
 	public List<Question> getAllQuestion();
 	public void deleteQuestion(int id);
 	//Custom Query

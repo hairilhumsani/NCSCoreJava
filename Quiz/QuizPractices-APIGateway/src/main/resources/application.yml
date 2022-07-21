@@ -15,9 +15,15 @@ spring:
      - id: QUIZPRACTICES-QUESTION
        uri: lb://QUIZPRACTICES-QUESTION
        predicates: 
-        - Path=/api/question/**
+        - Path=/api/questions/**
         
-     - id: NCS-MOVIE-SERVICE
-       uri: lb://NCS-MOVIE-SERVICE 
+     - id: QUIZPRACTICES-USER
+       uri: lb://QUIZPRACTICES-USER 
        predicates: 
-        - Path=/api/movie/**   
+        - Path=/api/users/**
+        
+        
+     - id: QUIZPRACTICES-TEST
+       uri: lb://QUIZPRACTICES-TEST 
+       predicates: 
+        - Path=/api/tests/**      
