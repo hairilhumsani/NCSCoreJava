@@ -27,7 +27,7 @@ public class QuestionRestController {
 	}
 
 	@GetMapping("/getAll")
-	public List<Question> getAllEmployees() {
+	public List<Question> getAllQuestions() {
 		return questionService.getAllQuestion();
 	}
 

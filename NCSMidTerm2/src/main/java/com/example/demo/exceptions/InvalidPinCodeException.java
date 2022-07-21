@@ -1,4 +1,4 @@
-package com.midterm.exceptions;
+package com.example.demo.exceptions;
 
 public class InvalidPinCodeException extends Exception {
 
