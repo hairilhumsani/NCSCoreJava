@@ -13,6 +13,7 @@ public interface UsersService {
 	public List<Users> getAllUsers();
 	public void deleteUserById(int id);
 	
+	//Custom
 	public List<Users> getUsersByUsername(String username);
 	public List<Users> getUserByEmail(String email);
 
