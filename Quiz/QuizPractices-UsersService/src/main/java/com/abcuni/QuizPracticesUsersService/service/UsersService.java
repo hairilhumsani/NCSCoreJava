@@ -12,6 +12,7 @@ public interface UsersService {
 	//JPA
 	public List<Users> getAllUsers();
 	public void deleteUserById(int id);
+	public Users saveUsers(Users user);
 	
 	//Custom
 	public List<Users> getUsersByUsername(String username);

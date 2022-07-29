@@ -53,22 +53,18 @@ public class PublicController {
 
 		return new ResponseEntity<JWTResponseDTO>(jwtResponseDTO, HttpStatus.OK);
 	}
-	
-	//register user
-    @PostMapping("/register")
-    public MySecuredUsers addUsers(@RequestBody MySecuredUsers appUsers) throws Exception
-    {
-    	MySecuredUsers users = null;
-    	try 
-    	{
-            users = appUserServiceImpl.saveUsers(appUsers);
-        }
-    	catch (Exception e)
-    	{
-    		throw new Exception(e.toString());
-    	}
+
+	// register user
+	@PostMapping("/register")
+	public MySecuredUsers addUsers(@RequestBody MySecuredUsers appUsers) throws Exception {
+		MySecuredUsers users = null;
+		try {
+			users = appUserServiceImpl.saveUsers(appUsers);
+		} catch (Exception e) {
+			throw new Exception(e.toString());
+		}
 		return users;
-    	
-    }
-    
+
+	}
+
 }

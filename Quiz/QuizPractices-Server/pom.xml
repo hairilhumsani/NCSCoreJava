@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.abcuni</groupId>
 	<artifactId>QuizPractices-Server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1</version>
 	<name>QuizPractices-Server</name>
 	<description>Quiz Practice for Students</description>
 	<properties>

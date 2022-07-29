@@ -40,7 +40,7 @@ public class MyAppSecurityConfig extends WebSecurityConfigurerAdapter{
 		 http.
 		 //	csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 		 //	.and().
-		 	csrf().disable().cors().disable().
+		 	csrf().disable().
 			authorizeRequests().
 
 			antMatchers("/public/**").permitAll().

@@ -36,4 +36,9 @@ public class UsersServiceImpl implements UsersService{
 		return null;
 	}
 
+	@Override
+	public Users saveUsers(Users user) {
+		return usersRepository.save(user);
+	}
+
 }
