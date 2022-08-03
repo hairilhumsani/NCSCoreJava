@@ -9,8 +9,8 @@ import com.abcuni.QuizPracticesUsersService.model.Users;
 import com.abcuni.QuizPracticesUsersService.repository.UsersRepository;
 
 @Service
-public class UsersServiceImpl implements UsersService{
-	
+public class UsersServiceImpl implements UsersService {
+
 	@Autowired
 	UsersRepository usersRepository;
 
@@ -22,7 +22,7 @@ public class UsersServiceImpl implements UsersService{
 	@Override
 	public void deleteUserById(int id) {
 		usersRepository.deleteById(id);
-		
+
 	}
 
 	@Override
@@ -45,7 +45,11 @@ public class UsersServiceImpl implements UsersService{
 	public List<Users> getUserByRole(String role) {
 		return usersRepository.getUserByRole(role);
 	}
-	
-	
+
+	@Override
+	public Users updateUsers(Users user) {
+		Users update = usersRepository.save(user);
+		return update;
+	}
 
 }

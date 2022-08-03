@@ -13,6 +13,7 @@ public interface UsersService {
 	public List<Users> getAllUsers();
 	public void deleteUserById(int id);
 	public Users saveUsers(Users user);
+	public Users updateUsers(Users user);
 	
 	//Custom
 	public List<Users> getUsersByUsername(String username);
