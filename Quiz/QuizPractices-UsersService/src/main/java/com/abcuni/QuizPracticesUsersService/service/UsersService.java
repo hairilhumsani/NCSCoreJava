@@ -17,5 +17,6 @@ public interface UsersService {
 	//Custom
 	public List<Users> getUsersByUsername(String username);
 	public List<Users> getUserByEmail(String email);
+	public List<Users> getUserByRole(String role);
 
 }

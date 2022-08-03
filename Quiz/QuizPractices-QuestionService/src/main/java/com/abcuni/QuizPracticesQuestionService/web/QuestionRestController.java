@@ -1,15 +1,18 @@
 package com.abcuni.QuizPracticesQuestionService.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,13 +50,27 @@ public class QuestionRestController {
 	}
 
 	@GetMapping("/getByCategory/{category}")
-	public ResponseEntity<List<Question>> getByCategory(@PathVariable String category) throws Exception {
+	public List<Question> getByCategory(@PathVariable String category) throws Exception {
 		List<Question> getQuestions = questionService.getQuestionbyCategory(category);
 
 		if (getQuestions != null) {
-			return new ResponseEntity<List<Question>>(getQuestions, HttpStatus.OK);
+			return getQuestions;
 		} else {
 			throw new Exception("Invalid Category");
+		}
+	}
+	
+	@GetMapping("/getById/{id}")
+	public Optional<Question> getById(@PathVariable int id) throws Exception
+	{
+		Optional<Question> result = questionService.getQuestionById(id);
+		if (result.isPresent())
+		{
+			return result;
+		}
+		else
+		{
+			throw new Exception("Invalid Id");
 		}
 	}
 	
@@ -64,13 +81,42 @@ public class QuestionRestController {
 		if (getQuestions != null) {
 			return new ResponseEntity<List<Question>>(getQuestions, HttpStatus.OK);
 		} else {
-			throw new Exception("Invalid Category");
+			throw new Exception("Invalid Difficulty");
 		}
 	}
 	
 	
 	//UPDATE
+	
+	@PutMapping("/updateQuestion")
+	public ResponseEntity<Question> updateQuestion(@RequestBody Question q) throws Exception
+	{
+		Question update = questionService.updateQuestion(q);
+		try {
+			return new ResponseEntity<Question>(update,HttpStatus.OK);
+		}
+		catch (Exception e)
+		{
+			throw new Exception("Invalid Movement");
+		}
+		
+	}
 	//DELETE
+	
+	
+	@DeleteMapping("/deleteQuestion/{id}")
+	public ResponseEntity<String> delete(@PathVariable int id) throws Exception
+	{
+		questionService.deleteQuestion(id);
+		try {
+			return new ResponseEntity<String>(HttpStatus.OK);
+		}
+		catch (Exception e)
+		{
+			throw new Exception("Invalid Movement");
+		}
+		
+	}
 
 	
 }//END OF CLASS

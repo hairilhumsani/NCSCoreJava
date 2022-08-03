@@ -25,6 +25,18 @@ public class CustomQuestionRepositoryImpl implements CustomQuestionRepository{
 		List<Question> queryOutput = (List<Question>) q.getResultList();
 		return queryOutput;
 	}
+	
+	@Override
+	public Question getQuestionById(int id) {
+		// TODO Auto-generated method stub
+		String query = "from Question e where e.questionId = :questionId";
+		Query q = springDataJPA.createQuery(query,Question.class);
+		
+		q.setParameter("questionId", id);
+		@SuppressWarnings("unchecked")
+		Question queryOutput = (Question) q.getSingleResult();
+		return queryOutput;
+	}
 
 	@Override
 	public List<Question> getQuestionByMarks(int marks) {
@@ -39,7 +51,7 @@ public class CustomQuestionRepositoryImpl implements CustomQuestionRepository{
 
 	@Override
 	public void updateQuestion(int id) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

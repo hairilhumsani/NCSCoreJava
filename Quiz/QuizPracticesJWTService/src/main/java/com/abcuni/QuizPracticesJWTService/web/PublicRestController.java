@@ -13,9 +13,6 @@
 //-------------------------------------------------------------------
 package com.abcuni.QuizPracticesJWTService.web;
 
-import java.util.Arrays;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +33,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.abcuni.QuizPracticesJWTService.dto.JWTResponseDTO;
-import com.abcuni.QuizPracticesJWTService.model.Question;
 import com.abcuni.QuizPracticesJWTService.model.Users;
 import com.abcuni.QuizPracticesJWTService.security.JWTUtil;
+import com.abcuni.QuizPracticesJWTService.security.MyUserDetails;
 import com.abcuni.QuizPracticesJWTService.service.AdminService;
 
 @CrossOrigin
@@ -53,6 +50,9 @@ public class PublicRestController {
 	AdminService adminService;
 
 	@Autowired
+	MyUserDetails myDetails;
+	
+	@Autowired
 	private AuthenticationManager authenticationManager;
 
 	@Autowired
@@ -63,6 +63,9 @@ public class PublicRestController {
 	@GetMapping("/validate")
 	public boolean validateToken(HttpServletRequest request) {
 		String requestedTokenHeader = request.getHeader("Authorization");
+		
+
+		// String requestedTokenHeader = token;
 		String username = null;
 		String jwtToken = null;
 
@@ -132,9 +135,22 @@ public class PublicRestController {
 			throw new Exception("Bad credentials ");
 		}
 		UserDetails userDetails = adminService.loadUserByUsername(userEntry.getUsername());
+		myDetails = (MyUserDetails) userDetails;
 		String token = jwtUtil.generateToken(userDetails);
 		boolean isValid = token != null ? true : false;
-		JWTResponseDTO jwtResponseDTO = new JWTResponseDTO(token, userEntry.getUsername(), isValid);
+		JWTResponseDTO jwtResponseDTO = new JWTResponseDTO(token, userEntry.getUsername(), isValid, myDetails.getRole());
 		return new ResponseEntity<JWTResponseDTO>(jwtResponseDTO, HttpStatus.OK);
+	}
+	
+	@PostMapping("/register")
+	public Users addAdmin(@RequestBody Users users) throws Exception {
+		Users user = null;
+		try {
+			user = adminService.saveUsers(users);
+		} catch (Exception e) {
+			throw new Exception(e.toString());
+		}
+
+		return user;
 	}
 }// end class

@@ -21,6 +21,7 @@ public class CustomTestsRepositoryImpl implements CustomTestsRepository{
 		Query q = springDataJPA.createQuery(query,Tests.class);
 		q.setParameter("id", id);
 		
+		@SuppressWarnings("unchecked")
 		List<Tests> queryOutput = q.getResultList();
 		return queryOutput;
 	}

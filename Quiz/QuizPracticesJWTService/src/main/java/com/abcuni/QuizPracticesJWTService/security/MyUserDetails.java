@@ -7,10 +7,11 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 import com.abcuni.QuizPracticesJWTService.model.Users;
 
-
+@Service
 public class MyUserDetails implements UserDetails {
 	/**
 	 * 
@@ -41,6 +42,12 @@ public class MyUserDetails implements UserDetails {
 	public String getUsername() {
 		String username = user.getUsername();
 		return username;
+	}
+	
+	public String getRole()
+	{
+		String role = user.getRole();
+		return role;
 	}
 
 	@Override

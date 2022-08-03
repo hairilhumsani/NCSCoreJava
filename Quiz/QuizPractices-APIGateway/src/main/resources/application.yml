@@ -19,6 +19,8 @@ spring:
             allowedMethods:
             - GET
             - POST 
+            - PUT
+            - DELETE
     routes: 
      - id: QUIZPRACTICES-QUESTION
        uri: lb://QUIZPRACTICES-QUESTION

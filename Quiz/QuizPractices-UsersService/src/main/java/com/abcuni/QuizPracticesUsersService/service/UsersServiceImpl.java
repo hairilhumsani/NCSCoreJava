@@ -41,4 +41,11 @@ public class UsersServiceImpl implements UsersService{
 		return usersRepository.save(user);
 	}
 
+	@Override
+	public List<Users> getUserByRole(String role) {
+		return usersRepository.getUserByRole(role);
+	}
+	
+	
+
 }

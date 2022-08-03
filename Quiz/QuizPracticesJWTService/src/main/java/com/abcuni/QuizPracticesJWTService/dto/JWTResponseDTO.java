@@ -8,6 +8,7 @@ public class JWTResponseDTO {
 	private String token;
 	private String username;
 	private boolean isValid;
+	private String role;
 
 	public JWTResponseDTO() {
 		super();
@@ -16,14 +17,16 @@ public class JWTResponseDTO {
 
 	@Override
 	public String toString() {
-		return "JWTResponseDTO [token=" + token + ", username=" + username + ", isValid=" + isValid + "]";
+		return "JWTResponseDTO [token=" + token + ", username=" + username + ", isValid=" + isValid + ", role=" + role
+				+ "]";
 	}
 
-	public JWTResponseDTO(String token, String username, boolean isValid) {
+	public JWTResponseDTO(String token, String username, boolean isValid, String role) {
 		super();
 		this.token = token;
 		this.username = username;
 		this.isValid = isValid;
+		this.role = role;
 	}
 
 	public String getToken() {
@@ -48,6 +51,14 @@ public class JWTResponseDTO {
 
 	public void setValid(boolean isValid) {
 		this.isValid = isValid;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 

@@ -1,6 +1,7 @@
 package com.abcuni.QuizPracticesQuestionService.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,24 @@ public class QuestionServiceImpl implements QuestionService{
 		Question addQuestion = questionRepository.save(q);
 		return addQuestion;
 	}
+
+	@Override
+	public Optional<Question> getQuestionById(int id) {
+		Optional<Question> getQuestion = questionRepository.findById(id);
+		return getQuestion;
+	}
+
+	@Override
+	public Question updateQuestion(Question q) {
+		Question update = questionRepository.save(q);
+		return update;
+	}
+
+	@Override
+	public void deleteQuestion(Question q) {
+		questionRepository.delete(q);
+	}
+	
+	
 
 }

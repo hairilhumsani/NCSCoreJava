@@ -15,6 +15,7 @@ public interface CustomQuestionRepository {
 	
 	//UPDATE
 	public void updateQuestion(int id);
+	Question getQuestionById(int id);
 	
 	//DELETE
 	
